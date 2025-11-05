@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="시그코퍼레이션 - 와디즈, 커머스, 브랜딩 전문 에이전시">
+    <title>시그코퍼레이션 | SIG Corporation - 와디즈 펀딩 & 마케팅 전문</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <style>
+        /* Full Page Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .fullpage-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 2rem;
+        }
+
+        .hero-section {
+            background-image: url('images/hero-bg.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            color: white;
+            margin-top: 80px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+        }
+        
+        .hero-section::before {
+            display: none;
+        }
+        
+        .hero-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            font-weight: 900; /* Black */
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-section .highlight {
+            color: var(--accent-color);
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 700; /* Bold */
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .hero-btn.primary {
+            background: var(--accent-bg);
+            color: white;
+        }
+
+        .hero-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .features-section.fullpage-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+
+        .features-section {
+            padding: 100px 2rem;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--secondary-gray);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .cta-section.fullpage-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: var(--accent-bg);
+        }
+
+        .cta-section {
+            background: var(--accent-bg);
+            color: white;
+            padding: 100px 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 900; /* Black */
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-section .cta-button {
+            background: white;
+            color: var(--primary-black);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .cta-section .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/siglogo.svg" alt="SIG CORPORATION" class="logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="portfolio.html"><span class="nav-text"><span class="nav-text-ko">포트폴리오</span><span class="nav-text-en">PORTFOLIO</span></span></a></li>
+                <li><a href="about.html"><span class="nav-text"><span class="nav-text-ko">회사 소개</span><span class="nav-text-en">ABOUT US</span></span></a></li>
+                <li><a href="services.html"><span class="nav-text"><span class="nav-text-ko">사업분야</span><span class="nav-text-en">SERVICES</span></span></a></li>
+                <li><a href="contact.html"><span class="nav-text"><span class="nav-text-ko">제작문의</span><span class="nav-text-en">CONTACT US</span></span></a></li>
+            </ul>
+            <a href="contact.html" class="cta-button">상담 신청</a>
+        </nav>
+    </header>
+
+    <section class="hero-section fullpage-section" data-section="0">
+        <h1>데이터가 증명하는<br><span class="highlight">성공적인 마케팅</span></h1>
+        <p>크라우드 펀딩부터 종합 마케팅까지, 시그코퍼레이션과 함께하세요</p>
+        <div class="hero-buttons">
+            <a href="portfolio.html" class="hero-btn primary">포트폴리오 보기</a>
+            <a href="contact.html" class="hero-btn secondary">무료 상담 신청</a>
+        </div>
+    </section>
+
+    <section class="stats-banner stats-banner-main fullpage-section" id="stats-banner" data-section="1">
+        <div class="stats-container">
+            <div class="stat-item"><h3>12,476%</h3><p>누적 펀딩률</p></div>
+            <div class="stat-item"><h3>2.86억+</h3><p>누적 펀딩액</p></div>
+            <div class="stat-item"><h3>9개</h3><p>프로젝트 기획</p></div>
+            <div class="stat-item"><h3>16회</h3><p>앵콜 포함 펀딩 오픈</p></div>
+        </div>
+    </section>
+
+    <section class="features-section fullpage-section" data-section="2">
+        <div class="container">
+            <h2 class="section-title">MARKETING SOLUTION</h2>
+            <p class="section-subtitle">제품을 만드는 건 클라이언트, 매출을 만드는 건 시그코퍼레이션입니다</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>와디즈 펀딩 전문</h3>
+                    <p>평균 2,000% 이상의 펀딩률을 달성하는 검증된 노하우로 성공적인 펀딩을 보장합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>통합 마케팅</h3>
+                    <p>기획부터 디자인, 광고 운영까지 원스톱 솔루션으로 시간과 비용을 절감합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>데이터 기반 전략</h3>
+                    <p>실시간 성과 분석과 A/B 테스트로 최적의 결과를 도출합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>브랜딩 전문성</h3>
+                    <p>로고부터 패키지까지, 일관된 브랜드 경험을 설계합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>빠른 실행력</h3>
+                    <p>평균 4-6주 내 프로젝트 완료로 빠른 시장 진입을 지원합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>합리적인 비용</h3>
+                    <p>성과 기반 가격 정책으로 위험은 최소화하고 성공 가능성은 극대화합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section fullpage-section" data-section="3">
+        <h2>지금 바로 시작하세요</h2>
+        <p>무료 상담을 통해 프로젝트의 가능성을 확인해보세요</p>
+        <a href="contact.html" class="cta-button">무료 상담 신청하기 →</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="portfolio.html">포트폴리오</a>
+                <a href="about.html">회사 소개</a>
+                <a href="services.html">사업분야</a>
+                <a href="contact.html">제작문의</a>
+            </div>
+            <p style="opacity: 0.8; margin-top: 2rem;">© 2024 SIG CORPORATION. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="js/fullpage.js"></script>
+    <script src="js/rolling-balls.js"></script>
+    <script src="js/interactive.js"></script>
+</body>
+</html>

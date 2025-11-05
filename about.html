@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="시그코퍼레이션 회사 소개">
+    <title>회사 소개 - 시그코퍼레이션 | SIG Corporation</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <style>
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+
+        .about-intro {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .about-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+
+        .about-intro p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .values-section {
+            background: var(--secondary-gray);
+            padding: 80px 2rem;
+            margin: 80px 0;
+        }
+
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-item h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .value-item p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .team-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 2rem;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--secondary-gray);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .team-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-card .role {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/siglogo.svg" alt="SIG CORPORATION" class="logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="portfolio.html"><span class="nav-text"><span class="nav-text-ko">포트폴리오</span><span class="nav-text-en">PORTFOLIO</span></span></a></li>
+                <li><a href="about.html"><span class="nav-text"><span class="nav-text-ko">회사 소개</span><span class="nav-text-en">ABOUT US</span></span></a></li>
+                <li><a href="services.html"><span class="nav-text"><span class="nav-text-ko">사업분야</span><span class="nav-text-en">SERVICES</span></span></a></li>
+                <li><a href="contact.html"><span class="nav-text"><span class="nav-text-ko">제작문의</span><span class="nav-text-en">CONTACT US</span></span></a></li>
+            </ul>
+            <a href="contact.html" class="cta-button">상담 신청</a>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>회사 소개</h1>
+        <p>시그코퍼레이션을 소개합니다</p>
+    </section>
+
+    <div class="about-content">
+        <div class="about-intro">
+            <h2>데이터로 증명하는 성장 파트너</h2>
+            <p>
+                시그코퍼레이션은 와디즈 펀딩, 커머스 마케팅, 브랜딩을 전문으로 하는 디지털 에이전시입니다.
+                <br><br>
+                우리는 단순한 제작 대행사가 아닙니다. 고객의 성공이 곧 우리의 성공이라는 믿음으로,
+                데이터 기반의 전략과 검증된 노하우를 통해 확실한 성과를 만들어냅니다.
+                <br><br>
+                평균 2,000% 이상의 와디즈 펀딩률, 업계 평균 3배 이상의 전환율은
+                우리의 전문성을 증명하는 숫자들입니다.
+            </p>
+        </div>
+    </div>
+
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">핵심 가치</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <h3>성과 중심</h3>
+                    <p>모든 전략과 실행은 측정 가능한 성과를 목표로 합니다</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h3>파트너십</h3>
+                    <p>고객의 성공이 우리의 성공입니다. 함께 성장합니다</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">⚡</div>
+                    <h3>빠른 실행</h3>
+                    <p>아이디어를 빠르게 시장에 선보이는 것이 경쟁력입니다</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💡</div>
+                    <h3>창의성</h3>
+                    <p>차별화된 전략으로 시장에서 주목받게 만듭니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="team-section">
+        <h2>전문 팀</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <h4>전략 기획팀</h4>
+                <p class="role">Strategy Planning</p>
+                <p>시장 분석과 데이터 기반으로 최적의 전략을 수립합니다</p>
+            </div>
+            <div class="team-card">
+                <h4>크리에이티브팀</h4>
+                <p class="role">Creative Design</p>
+                <p>차별화된 비주얼과 감성적인 스토리텔링을 만듭니다</p>
+            </div>
+            <div class="team-card">
+                <h4>마케팅팀</h4>
+                <p class="role">Performance Marketing</p>
+                <p>광고 운영과 최적화로 높은 ROI를 실현합니다</p>
+            </div>
+            <div class="team-card">
+                <h4>콘텐츠팀</h4>
+                <p class="role">Content Creation</p>
+                <p>3D 모델링부터 영상까지 모든 콘텐츠를 제작합니다</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="stats-banner">
+        <div class="stats-container">
+            <div class="stat-item"><h3>2020</h3><p>설립</p></div>
+            <div class="stat-item"><h3>50+</h3><p>완료 프로젝트</p></div>
+            <div class="stat-item"><h3>98%</h3><p>고객 만족도</p></div>
+            <div class="stat-item"><h3>100%</h3><p>성공률</p></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="portfolio.html">포트폴리오</a>
+                <a href="about.html">회사 소개</a>
+                <a href="services.html">사업분야</a>
+                <a href="contact.html">제작문의</a>
+            </div>
+            <p style="opacity: 0.8; margin-top: 2rem;">© 2024 SIG CORPORATION. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="js/interactive.js"></script>
+</body>
+</html>
