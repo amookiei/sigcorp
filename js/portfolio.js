@@ -346,11 +346,18 @@ function closeModal() {
 // ==========================================
 
 function showAdminLogin() {
+    if (window.SIGAuth) {
+        if (window.SIGAuth.isAdmin()) {
+            openAdminPanel();
+        } else {
+            window.SIGAuth.requireAdmin(openAdminPanel);
+        }
+        return;
+    }
+
     const password = prompt('관리자 비밀번호를 입력하세요:');
     if (password === 'sig0802') {
-        document.getElementById('adminPanel').classList.add('active');
-        document.body.style.overflow = 'hidden';
-        renderAdminPanel();
+        openAdminPanel();
     } else if (password !== null) {
         alert('비밀번호가 올바르지 않습니다.');
     }
@@ -359,6 +366,12 @@ function showAdminLogin() {
 function closeAdmin() {
     document.getElementById('adminPanel').classList.remove('active');
     document.body.style.overflow = 'auto';
+}
+
+function openAdminPanel() {
+    document.getElementById('adminPanel').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    renderAdminPanel();
 }
 
 function renderAdminPanel() {
@@ -879,6 +892,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize count up animation
     initCountUpAnimation();
+});
+
+document.addEventListener('sig-auth-changed', function(event) {
+    if (!event?.detail?.isAdmin) {
+        closeAdmin();
+    }
 });
 
 // Prevent form submission on Enter key in admin panel

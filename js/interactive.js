@@ -119,7 +119,7 @@ function initCustomCursor() {
     animateFollower();
     
     // 호버 효과
-    document.querySelectorAll('a, button, .portfolio-item, .feature-card').forEach(el => {
+    document.querySelectorAll('a, button, .portfolio-item, .feature-card, .blog-card, .blog-hero-card, .blog-create-btn').forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.classList.add('cursor-hover');
             cursorFollower.classList.add('cursor-hover');
@@ -180,7 +180,7 @@ function initScrollProgress() {
 // ==========================================
 
 function initRippleEffect() {
-    const buttons = document.querySelectorAll('.hero-btn, .cta-button, .form-submit, .admin-btn');
+    const buttons = document.querySelectorAll('.hero-btn, .cta-button, .form-submit, .admin-btn, .auth-button, .blog-create-btn, .editor-btn');
     
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -227,7 +227,7 @@ function initTextReveal() {
 // ==========================================
 
 function initMagneticButtons() {
-    const magneticButtons = document.querySelectorAll('.hero-btn, .cta-button');
+    const magneticButtons = document.querySelectorAll('.hero-btn, .cta-button, .blog-create-btn');
     
     magneticButtons.forEach(button => {
         button.addEventListener('mousemove', (e) => {

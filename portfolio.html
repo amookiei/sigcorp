@@ -51,6 +51,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="blog.html">
+                        <span class="nav-text">
+                            <span class="nav-text-ko">블로그</span>
+                            <span class="nav-text-en">BLOG</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
                     <a href="contact.html">
                         <span class="nav-text">
                             <span class="nav-text-ko">제작문의</span>
@@ -59,7 +67,11 @@
                     </a>
                 </li>
             </ul>
-            <a href="contact.html" class="cta-button">상담 신청</a>
+            <div class="nav-actions">
+                <span class="auth-badge" data-auth-state="badge"></span>
+                <button type="button" class="auth-button" data-auth-control="button">로그인</button>
+                <a href="contact.html" class="cta-button">상담 신청</a>
+            </div>
         </nav>
     </header>
 
@@ -195,6 +207,7 @@
                 <a href="portfolio.html">포트폴리오</a>
                 <a href="about.html">회사 소개</a>
                 <a href="services.html">사업분야</a>
+                <a href="blog.html">블로그</a>
                 <a href="contact.html">제작문의</a>
             </div>
             <p style="opacity: 0.8; margin-top: 2rem;">
@@ -206,6 +219,7 @@
     <!-- ==========================================
          JavaScript
          ========================================== -->
+    <script src="js/auth.js"></script>
     <script src="js/portfolio.js"></script>
     <script src="js/interactive.js"></script>
 </body>

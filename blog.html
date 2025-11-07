@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="시그코퍼레이션 블로그 - AI, 마케팅, 고객 성공 사례 인사이트">
+    <title>블로그 - 시그코퍼레이션 | SIG Corporation</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+</head>
+<body class="blog-page">
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/siglogo.svg" alt="SIG CORPORATION" class="logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="portfolio.html"><span class="nav-text"><span class="nav-text-ko">포트폴리오</span><span class="nav-text-en">PORTFOLIO</span></span></a></li>
+                <li><a href="about.html"><span class="nav-text"><span class="nav-text-ko">회사 소개</span><span class="nav-text-en">ABOUT US</span></span></a></li>
+                <li><a href="services.html"><span class="nav-text"><span class="nav-text-ko">사업분야</span><span class="nav-text-en">SERVICES</span></span></a></li>
+                <li><a href="blog.html"><span class="nav-text"><span class="nav-text-ko">블로그</span><span class="nav-text-en">BLOG</span></span></a></li>
+                <li><a href="contact.html"><span class="nav-text"><span class="nav-text-ko">제작문의</span><span class="nav-text-en">CONTACT US</span></span></a></li>
+            </ul>
+            <div class="nav-actions">
+                <span class="auth-badge" data-auth-state="badge"></span>
+                <button type="button" class="auth-button" data-auth-control="button">로그인</button>
+                <a href="contact.html" class="cta-button">상담 신청</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-main">
+        <section class="blog-hero">
+            <div class="blog-hero-grid">
+                <article class="blog-hero-primary" id="blogHeroPrimary">
+                    <div class="blog-hero-cover" id="blogHeroCover"></div>
+                    <div class="blog-tag light" id="blogHeroCategory">BLOG</div>
+                    <h1 id="blogHeroTitle">AI, CX, 마케팅의 실전 인사이트를 한 곳에서</h1>
+                    <p id="blogHeroExcerpt">데이터로 증명된 고객 경험 전략과 AI 도입 사례를 소개합니다.</p>
+                    <div class="blog-hero-meta">
+                        <span class="blog-meta-author" id="blogHeroAuthor">SIG팀</span>
+                        <span class="blog-meta-dot"></span>
+                        <span id="blogHeroDate">오늘 업데이트</span>
+                    </div>
+                </article>
+                <div class="blog-hero-secondary" id="blogHeroSecondary"></div>
+            </div>
+        </section>
+
+        <section class="blog-toolbar">
+            <div class="blog-toolbar-inner">
+                <div class="blog-category-filter" id="blogCategoryFilter"></div>
+                <button type="button" class="blog-create-btn" id="openBlogEditor">
+                    <span>＋</span>
+                    새 글 작성
+                </button>
+            </div>
+        </section>
+
+        <section class="blog-section" id="recentSection">
+            <div class="blog-section-header">
+                <h2>최근 아티클</h2>
+                <p>최신 소식을 가장 빠르게 확인하세요</p>
+            </div>
+            <div class="blog-card-grid" id="recentPostsGrid"></div>
+        </section>
+
+        <section class="blog-section" id="featuredSection" hidden>
+            <div class="blog-section-header">
+                <h2>추천 아티클</h2>
+                <p>관리자가 엄선한 핵심 스토리</p>
+            </div>
+            <div class="blog-card-grid" id="featuredPostsGrid"></div>
+        </section>
+
+        <section class="blog-section" id="categoryArchiveSection">
+            <div class="blog-section-header">
+                <h2>카테고리 아카이브</h2>
+                <p>관심 있는 주제만 골라 읽어보세요</p>
+            </div>
+            <div id="categorySections"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="portfolio.html">포트폴리오</a>
+                <a href="about.html">회사 소개</a>
+                <a href="services.html">사업분야</a>
+                <a href="blog.html">블로그</a>
+                <a href="contact.html">제작문의</a>
+            </div>
+            <p style="opacity: 0.8; margin-top: 2rem;">© 2024 SIG CORPORATION. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="blog-editor-overlay" id="blogEditorOverlay">
+        <div class="blog-editor-container">
+            <div class="blog-editor-header">
+                <div>
+                    <h2>새 블로그 글 작성</h2>
+                    <p class="auth-modal-subtitle">노션과 동일한 UX로 글을 편집하고, 색상과 블록을 자유롭게 조합하세요.</p>
+                </div>
+                <div class="blog-editor-actions">
+                    <button type="button" class="editor-btn ghost" data-editor-action="close">나가기</button>
+                    <button type="button" class="editor-btn primary" data-editor-action="save">발행하기</button>
+                </div>
+            </div>
+            <div class="blog-editor-body">
+                <aside class="editor-sidebar">
+                    <div class="editor-sidebar-group">
+                        <label for="editorCategory">카테고리</label>
+                        <select id="editorCategory"></select>
+                    </div>
+                    <div class="editor-sidebar-group">
+                        <label for="editorAuthor">작성자</label>
+                        <input type="text" id="editorAuthor" placeholder="작성자 이름" value="SIG팀">
+                    </div>
+                    <div class="editor-sidebar-group">
+                        <label for="editorTags">태그</label>
+                        <input type="text" id="editorTags" placeholder="태그를 쉼표로 구분해 입력하세요">
+                    </div>
+                    <div class="editor-sidebar-group">
+                        <label>썸네일 이미지</label>
+                        <div class="editor-cover-preview" id="editorCoverPreview">썸네일을 업로드하거나 비워두면 자동 그라데이션이 적용됩니다.</div>
+                        <input type="file" id="editorCoverInput" accept="image/*" hidden>
+                        <div class="editor-sidebar-actions" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                            <button type="button" class="editor-btn" data-editor-action="upload-cover">이미지 선택</button>
+                            <button type="button" class="editor-btn ghost" data-editor-action="remove-cover">이미지 제거</button>
+                        </div>
+                    </div>
+                    <div class="editor-sidebar-group">
+                        <label for="editorFeatured">추천 섹션 노출</label>
+                        <label class="editor-switch">
+                            <input type="checkbox" id="editorFeatured">
+                            <span class="editor-switch-display">추천 아티클로 고정</span>
+                        </label>
+                    </div>
+                </aside>
+                <section class="editor-main">
+                    <input type="text" class="editor-title" id="editorTitle" placeholder="대제목을 입력하세요">
+                    <div class="editor-toolbar">
+                        <div class="toolbar-group" data-toolbar="blocks">
+                            <button type="button" class="toolbar-button" data-command="paragraph">본문</button>
+                            <button type="button" class="toolbar-button" data-command="heading1">대제목</button>
+                            <button type="button" class="toolbar-button" data-command="heading2">소제목</button>
+                            <button type="button" class="toolbar-button" data-command="quote">인용</button>
+                        </div>
+                        <div class="toolbar-group" data-toolbar="text-color"></div>
+                        <div class="toolbar-group" data-toolbar="background-color"></div>
+                        <div class="toolbar-group" data-toolbar="media">
+                            <button type="button" class="toolbar-button" data-command="inline-image">이미지</button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button type="button" class="toolbar-button" data-command="clear">서식 해제</button>
+                        </div>
+                    </div>
+                    <div id="editorContent" class="notion-editor-area" contenteditable="true" data-placeholder="여기에 내용을 입력하세요. '/' 를 입력하면 블록 메뉴가 열립니다."></div>
+                    <div id="editorSlashMenu" class="editor-slash-menu"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="editorInlineImageInput" accept="image/*" hidden>
+
+    <div class="blog-article-modal" id="blogArticleModal">
+        <div class="blog-article-backdrop" data-blog-modal-close></div>
+        <div class="blog-article-content">
+            <button type="button" class="blog-article-close" data-blog-modal-close>×</button>
+            <div class="blog-article-header">
+                <span class="blog-card-tag" id="modalArticleCategory"></span>
+                <h2 id="modalArticleTitle"></h2>
+                <div class="blog-card-meta">
+                    <span class="blog-meta-author" id="modalArticleAuthor"></span>
+                    <span class="blog-meta-dot"></span>
+                    <span id="modalArticleDate"></span>
+                </div>
+            </div>
+            <div class="blog-article-cover" id="modalArticleCover" hidden>
+                <img src="" alt="블로그 대표 이미지">
+            </div>
+            <div class="blog-article-body" id="modalArticleBody"></div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script type="module" src="js/blog.js"></script>
+    <script src="js/interactive.js"></script>
+</body>
+</html>
+
