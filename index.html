@@ -59,10 +59,46 @@
             color: var(--accent-color);
         }
 
-        .hero-section p {
+        .hero-section .hero-eyebrow {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .hero-section .hero-lead {
             font-size: 1.5rem;
             opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-bottom: 3rem;
+        }
+
+        .hero-tag {
+            padding: 0.55rem 1.3rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            backdrop-filter: blur(6px);
+            transition: all 0.3s ease;
+        }
+
+        .hero-tag:hover {
+            background: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .hero-buttons {
@@ -147,6 +183,160 @@
             line-height: 1.8;
         }
 
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(61, 157, 90, 0.12);
+            color: var(--accent-color);
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-section {
+            background: linear-gradient(180deg, #f8fbf4 0%, #ffffff 100%);
+            padding: 120px 2rem;
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .timeline-title {
+            font-size: 2.6rem;
+            font-weight: 900;
+            margin-bottom: 1.25rem;
+        }
+
+        .timeline-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 3.5rem;
+        }
+
+        .timeline-track {
+            position: relative;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 2rem 1rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+        }
+
+        .timeline-track::before {
+            content: "";
+            position: absolute;
+            inset: auto 0 2.6rem 0;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(61, 157, 90, 0.15) 0%, rgba(61, 157, 90, 0.45) 50%, rgba(61, 157, 90, 0.15) 100%);
+            pointer-events: none;
+        }
+
+        .timeline-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .timeline-item {
+            --distance: 3;
+            flex: 0 0 280px;
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem 2.2rem;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            scroll-snap-align: center;
+            transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.5s ease, opacity 0.45s ease, filter 0.45s ease;
+            opacity: calc(1 - var(--distance) * 0.18);
+            filter: blur(calc(var(--distance) * 0.6px));
+            transform: translateY(calc(var(--distance) * 6px));
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            bottom: -2.6rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: var(--accent-color);
+            box-shadow: 0 0 0 6px rgba(61, 157, 90, 0.05);
+            opacity: calc(1 - var(--distance) * 0.18);
+            transition: opacity 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .timeline-item.is-active {
+            transform: translateY(-12px);
+            box-shadow: 0 26px 60px rgba(8, 53, 22, 0.18);
+            opacity: 1;
+            filter: none;
+        }
+
+        .timeline-item.is-active::before {
+            box-shadow: 0 0 0 10px rgba(61, 157, 90, 0.25);
+            opacity: 1;
+        }
+
+        .timeline-item:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 8px;
+        }
+
+        .timeline-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .timeline-date {
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        .timeline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(8, 53, 22, 0.08);
+            color: var(--accent-bg);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        .timeline-item p {
+            color: var(--text-gray);
+            text-align: left;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
         .cta-section.fullpage-section {
             min-height: 100vh;
             display: flex;
@@ -193,11 +383,205 @@
         }
 
         @media (max-width: 768px) {
-            .hero-section h1 {
-                font-size: 2.5rem;
+            .fullpage-section {
+                min-height: auto;
+                padding: 90px 1.5rem;
             }
-            .hero-section p {
-                font-size: 1.2rem;
+            .hero-section {
+                margin-top: 70px;
+                min-height: auto;
+            }
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .hero-section .hero-eyebrow {
+                font-size: 0.85rem;
+                margin-bottom: 1.2rem;
+            }
+            .hero-section .hero-lead {
+                font-size: 1.05rem;
+                margin-bottom: 1.8rem;
+            }
+            .hero-tags {
+                gap: 0.65rem;
+                margin-bottom: 2.4rem;
+            }
+            .hero-tag {
+                font-size: 0.85rem;
+                padding: 0.45rem 1rem;
+            }
+            .hero-btn {
+                padding: 0.85rem 1.9rem;
+                font-size: 0.98rem;
+            }
+            .stats-banner {
+                padding: 80px 1.5rem;
+            }
+            .stats-banner .stats-container {
+                gap: 1.5rem;
+            }
+            .stat-item h3 {
+                font-size: 1.9rem;
+            }
+            .stat-item p {
+                font-size: 0.9rem;
+            }
+            .features-section {
+                padding: 80px 1.5rem;
+            }
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 2rem;
+            }
+            .feature-card {
+                padding: 2.2rem 1.6rem;
+            }
+            .feature-icon {
+                font-size: 3rem;
+                margin-bottom: 1.1rem;
+            }
+            .feature-card h3 {
+                font-size: 1.4rem;
+            }
+            .feature-card p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            .timeline-section {
+                padding: 90px 1.5rem;
+            }
+            .timeline-title {
+                font-size: 2rem;
+            }
+            .timeline-subtitle {
+                font-size: 0.98rem;
+                margin-bottom: 2.5rem;
+            }
+            .timeline-track {
+                gap: 1.5rem;
+            }
+            .timeline-item {
+                flex-basis: 240px;
+                padding: 1.6rem 1.4rem 2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 3rem;
+            }
+            .cta-section {
+                padding: 80px 1.5rem;
+            }
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+            .cta-section p {
+                font-size: 1.05rem;
+            }
+            .cta-section .cta-button {
+                padding: 1rem 2.3rem;
+                font-size: 1.05rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fullpage-section {
+                padding: 60px 1.25rem;
+            }
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+            .hero-section .hero-eyebrow {
+                font-size: 0.78rem;
+            }
+            .hero-section .hero-lead {
+                font-size: 0.95rem;
+                margin-bottom: 1.4rem;
+            }
+            .hero-tags {
+                gap: 0.55rem;
+                margin-bottom: 2rem;
+            }
+            .hero-tag {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-buttons {
+                gap: 1rem;
+            }
+            .hero-btn {
+                width: 100%;
+                padding: 0.85rem 1.4rem;
+                font-size: 0.9rem;
+            }
+            .stats-banner .stats-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.25rem;
+            }
+            .stat-item h3 {
+                font-size: 1.6rem;
+            }
+            .stat-item p {
+                font-size: 0.85rem;
+            }
+            .features-section {
+                padding: 60px 1.25rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .feature-card {
+                padding: 1.8rem 1.3rem;
+            }
+            .feature-icon {
+                font-size: 2.6rem;
+            }
+            .feature-card h3 {
+                font-size: 1.25rem;
+            }
+            .feature-card p {
+                font-size: 0.88rem;
+            }
+            .timeline-section {
+                padding: 70px 1.25rem;
+            }
+            .timeline-title {
+                font-size: 1.7rem;
+            }
+            .timeline-subtitle {
+                font-size: 0.9rem;
+            }
+            .timeline-track {
+                padding: 1.5rem 0.6rem;
+            }
+            .timeline-item {
+                flex-basis: 220px;
+                padding: 1.4rem 1.2rem 1.8rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            .section-subtitle {
+                font-size: 0.92rem;
+                margin-bottom: 2.4rem;
+            }
+            .cta-section {
+                padding: 60px 1.25rem;
+            }
+            .cta-section h2 {
+                font-size: 1.9rem;
+            }
+            .cta-section p {
+                font-size: 0.98rem;
+                margin-bottom: 1.8rem;
+            }
+            .cta-section .cta-button {
+                width: 100%;
+                font-size: 0.98rem;
+                padding: 0.85rem 1.4rem;
             }
         }
     </style>
@@ -208,27 +592,35 @@
             <a href="index.html" class="logo">
                 <img src="images/siglogo.svg" alt="SIG CORPORATION" class="logo-img">
             </a>
-            <ul class="nav-menu">
-                <li><a href="portfolio.html"><span class="nav-text"><span class="nav-text-ko">포트폴리오</span><span class="nav-text-en">PORTFOLIO</span></span></a></li>
-                <li><a href="about.html"><span class="nav-text"><span class="nav-text-ko">회사 소개</span><span class="nav-text-en">ABOUT US</span></span></a></li>
-                <li><a href="services.html"><span class="nav-text"><span class="nav-text-ko">사업분야</span><span class="nav-text-en">SERVICES</span></span></a></li>
-                <li><a href="blog.html"><span class="nav-text"><span class="nav-text-ko">블로그</span><span class="nav-text-en">BLOG</span></span></a></li>
-                <li><a href="contact.html"><span class="nav-text"><span class="nav-text-ko">제작문의</span><span class="nav-text-en">CONTACT US</span></span></a></li>
-            </ul>
-            <div class="nav-actions">
-                <span class="auth-badge" data-auth-state="badge"></span>
-                <button type="button" class="auth-button" data-auth-control="button">로그인</button>
-                <a href="contact.html" class="cta-button">상담 신청</a>
+            <button type="button" class="nav-toggle" aria-expanded="false" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-collapsible">
+                <ul class="nav-menu">
+                    <li><a href="portfolio.html"><span class="nav-text"><span class="nav-text-ko">포트폴리오</span><span class="nav-text-en">PORTFOLIO</span></span></a></li>
+                    <li><a href="about.html"><span class="nav-text"><span class="nav-text-ko">회사 소개</span><span class="nav-text-en">ABOUT US</span></span></a></li>
+                    <li><a href="services.html"><span class="nav-text"><span class="nav-text-ko">사업분야</span><span class="nav-text-en">SERVICES</span></span></a></li>
+                    <li><a href="blog.html"><span class="nav-text"><span class="nav-text-ko">블로그</span><span class="nav-text-en">BLOG</span></span></a></li>
+                    <li><a href="contact.html"><span class="nav-text"><span class="nav-text-ko">제작문의</span><span class="nav-text-en">CONTACT US</span></span></a></li>
+                </ul>
+                <div class="nav-actions">
+                    <span class="auth-badge" data-auth-state="badge"></span>
+                    <button type="button" class="auth-button" data-auth-control="button">로그인</button>
+                    <a href="contact.html" class="cta-button">상담 신청</a>
+                </div>
             </div>
         </nav>
     </header>
 
     <section class="hero-section fullpage-section" data-section="0">
-        <h1>데이터가 증명하는<br><span class="highlight">성공적인 마케팅</span></h1>
-        <p>크라우드 펀딩부터 종합 마케팅까지, 시그코퍼레이션과 함께하세요</p>
+        <p class="hero-eyebrow">SIG CORPORATION</p>
+        <h1>디자인부터 마케팅까지,<br><span class="highlight">성과로 증명하는 A-Z 파트너</span></h1>
+        <p class="hero-lead">디자인·마케팅·운영을 한 팀으로 설계합니다</p>
         <div class="hero-buttons">
-            <a href="portfolio.html" class="hero-btn primary">포트폴리오 보기</a>
-            <a href="contact.html" class="hero-btn secondary">무료 상담 신청</a>
+            <a href="contact.html" class="hero-btn primary">상담하기</a>
+            <a href="portfolio.html" class="hero-btn secondary">포트폴리오</a>
         </div>
     </section>
 
@@ -244,44 +636,135 @@
     <section class="features-section fullpage-section" data-section="2">
         <div class="container">
             <h2 class="section-title">MARKETING SOLUTION</h2>
-            <p class="section-subtitle">제품을 만드는 건 클라이언트, 매출을 만드는 건 시그코퍼레이션입니다</p>
+            <p class="section-subtitle">디자인·마케팅·운영을 한 팀으로 설계합니다</p>
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>와디즈 펀딩 전문</h3>
-                    <p>평균 2,000% 이상의 펀딩률을 달성하는 검증된 노하우로 성공적인 펀딩을 보장합니다</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💡</div>
-                    <h3>통합 마케팅</h3>
-                    <p>기획부터 디자인, 광고 운영까지 원스톱 솔루션으로 시간과 비용을 절감합니다</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>데이터 기반 전략</h3>
-                    <p>실시간 성과 분석과 A/B 테스트로 최적의 결과를 도출합니다</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>브랜딩 전문성</h3>
-                    <p>로고부터 패키지까지, 일관된 브랜드 경험을 설계합니다</p>
-                </div>
-                <div class="feature-card">
                     <div class="feature-icon">🚀</div>
-                    <h3>빠른 실행력</h3>
-                    <p>평균 4-6주 내 프로젝트 완료로 빠른 시장 진입을 지원합니다</p>
+                    <span class="feature-badge">A-Z OPERATION</span>
+                    <h3>A-Z 브랜드 운영 대행</h3>
+                    <p>브랜드 기획부터 디자인, 마케팅, 운영까지 전 과정을 통합 관리하여 일관된 브랜드 경험을 제공합니다.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>합리적인 비용</h3>
-                    <p>성과 기반 가격 정책으로 위험은 최소화하고 성공 가능성은 극대화합니다</p>
+                    <div class="feature-icon">📦</div>
+                    <span class="feature-badge">PACKAGE DESIGN</span>
+                    <h3>패키지 디자인</h3>
+                    <p>제품의 가치를 시각적으로 전달하는 패키지 디자인으로 브랜드 아이덴티티를 강화하고 소비자 경험을 향상시킵니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <span class="feature-badge">PERFORMANCE MARKETING</span>
+                    <h3>퍼포먼스 마케팅 실행</h3>
+                    <p>데이터 기반의 정교한 타겟팅과 최적화로 높은 ROI를 달성하는 퍼포먼스 마케팅을 실행합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <span class="feature-badge">GROWTH INFRASTRUCTURE</span>
+                    <h3>그로스 인프라 구축</h3>
+                    <p>CRM, 데이터 파이프라인, 자동화 시스템을 구축하여 지속 가능한 성장 기반을 마련합니다.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section fullpage-section" data-section="3">
+    <section class="timeline-section fullpage-section" data-section="3">
+        <div class="timeline-container">
+            <h2 class="timeline-title">SIG 성장 타임라인</h2>
+            <p class="timeline-subtitle">정부지원사업 선정 경험과 제품 고도화 이력을 바탕으로, 마케팅을 넘어 사업 전반을 리딩합니다.</p>
+            <div class="timeline-track">
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2023.08</span>
+                        <span class="timeline-badge">설립</span>
+                    </div>
+                    <h3>주식회사 시그코퍼레이션 설립</h3>
+                    <p>풀스택 조직으로 출범했습니다.</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2023.10</span>
+                        <span class="timeline-badge">사업 확장</span>
+                    </div>
+                    <h3>시그코퍼레이션 기획/디자인 사업 확장</h3>
+                    <p>서예담 공식대행, 투뿔한우 NO.9 공식 운영, 소양옥 공식대행</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2023.10</span>
+                        <span class="timeline-badge">정부지원사업</span>
+                    </div>
+                    <h3>생애최초 예비창업 지원사업 최우수 기업 졸업</h3>
+                    <p>중소벤처기업부 정부지원사업 최우수 졸업</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2024.04</span>
+                        <span class="timeline-badge">종합 대행</span>
+                    </div>
+                    <h3>시그코퍼레이션 종합 대행 사업 확장</h3>
+                    <p>허브마토 공식대행, 논현 까사생갈비 공식대행, 이브봇 프린트펜 공식대행, 미래회관 공식대행, 서큘라이프 공식대행</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2024.04</span>
+                        <span class="timeline-badge">수상</span>
+                    </div>
+                    <h3>서대문구 청년벤처 육성사업 선정 및 구청장상 수상</h3>
+                    <p>서대문구 청년벤처 육성사업 선정 및 구청장상 수상</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2024.08</span>
+                        <span class="timeline-badge">올인원 대행</span>
+                    </div>
+                    <h3>시그코퍼레이션 올인원 대행 사업 확장</h3>
+                    <p>푸드머신코리아 공식대행, 을화푸드 공식대행, 유캔 캔시머 공식대행, 가치프로젝트 공식대행, 오빠어디가 여행 공식대행</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2025.04</span>
+                        <span class="timeline-badge">스튜디오 창설</span>
+                    </div>
+                    <h3>시그코퍼레이션 스튜디오 창설 및 사업 확장</h3>
+                    <p>시그 스튜디오 창설 및 운영</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2025.04</span>
+                        <span class="timeline-badge">우수 등급</span>
+                    </div>
+                    <h3>경기북부중진공 청년창업사관학교 15기 선정</h3>
+                    <p>중간평가 상위 10% '우수' 등급</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2025.08</span>
+                        <span class="timeline-badge">글로벌 MOU</span>
+                    </div>
+                    <h3>AMPM 글로벌 MOU 체결</h3>
+                    <p>No.1 디지털마케팅 전문가그룹, AMPM글로벌 MOU 체결</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2025.10</span>
+                        <span class="timeline-badge">TIPS 선정</span>
+                    </div>
+                    <h3>TIPS 선정</h3>
+                    <p>중소기업기술정보진흥원 창업성장기술개발 팁스 일반트랙 선정</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">2025.10</span>
+                        <span class="timeline-badge">스튜디오 운영</span>
+                    </div>
+                    <h3>시그코퍼레이션 스튜디오 운영</h3>
+                    <p>이마트, 노브랜드 디자인 대행, PEAIRY 공식대행, 인스타툰 작가 협찬 서비스 공식대행, 더벤티 납품 감자빵 공식 유통사</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section fullpage-section" data-section="4">
         <h2>지금 바로 시작하세요</h2>
         <p>무료 상담을 통해 프로젝트의 가능성을 확인해보세요</p>
         <a href="contact.html" class="cta-button">무료 상담 신청하기 →</a>

@@ -245,6 +245,124 @@ function initMagneticButtons() {
 }
 
 // ==========================================
+// Timeline Hover Center & Fade
+// ==========================================
+
+function initTimelineShowcase() {
+    const track = document.querySelector('.timeline-track');
+    if (!track) return;
+
+    const items = Array.from(track.querySelectorAll('.timeline-item'));
+    if (!items.length) return;
+
+    const maxDistance = 4;
+    let activeIndex = Math.floor(items.length / 2);
+
+    const updateDistances = (targetIndex) => {
+        items.forEach((item, index) => {
+            const distance = Math.min(Math.abs(index - targetIndex), maxDistance);
+            item.style.setProperty('--distance', distance);
+            item.classList.toggle('is-active', index === targetIndex);
+        });
+    };
+
+    const centerItem = (item) => {
+        const containerRect = track.getBoundingClientRect();
+        const itemRect = item.getBoundingClientRect();
+        const currentScroll = track.scrollLeft;
+        const offset = itemRect.left - (containerRect.left + (containerRect.width / 2) - (itemRect.width / 2));
+        track.scrollTo({
+            left: currentScroll + offset,
+            behavior: 'smooth'
+        });
+    };
+
+    const activate = (index) => {
+        if (index < 0 || index >= items.length) return;
+        activeIndex = index;
+        updateDistances(activeIndex);
+        centerItem(items[activeIndex]);
+    };
+
+    items.forEach((item, index) => {
+        item.addEventListener('pointerenter', () => activate(index));
+        item.addEventListener('focus', () => activate(index));
+        item.addEventListener('click', () => activate(index));
+    });
+
+    // 초기 상태 세팅
+    updateDistances(activeIndex);
+    requestAnimationFrame(() => {
+        centerItem(items[activeIndex]);
+    });
+
+    // 휠 스크롤로도 부드럽게 이동
+    track.addEventListener('wheel', (event) => {
+        if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+        event.preventDefault();
+        track.scrollBy({
+            left: event.deltaY,
+            behavior: 'smooth'
+        });
+    }, { passive: false });
+}
+
+// ==========================================
+// Mobile Navigation
+// ==========================================
+
+function initMobileNavigation() {
+    const toggle = document.querySelector('.nav-toggle');
+    const collapsible = document.querySelector('.nav-collapsible');
+    const navMenu = document.querySelector('.nav-menu');
+    const navActions = document.querySelector('.nav-actions');
+
+    if (!toggle || !collapsible || !navMenu) {
+        return;
+    }
+
+    const closeNav = () => {
+        document.body.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const willOpen = !document.body.classList.contains('nav-open');
+        document.body.classList.toggle('nav-open', willOpen);
+        toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        if (willOpen) {
+            collapsible.focus?.();
+        }
+    });
+
+    const interactiveElements = [
+        ...navMenu.querySelectorAll('a'),
+        ...(navActions ? navActions.querySelectorAll('a, button') : [])
+    ];
+
+    interactiveElements.forEach((element) => {
+        element.addEventListener('click', () => {
+            closeNav();
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!document.body.classList.contains('nav-open')) return;
+        const withinNav = collapsible.contains(event.target) || toggle.contains(event.target);
+        if (!withinNav) {
+            closeNav();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeNav();
+        }
+    });
+}
+
+// ==========================================
 // Initialize All
 // ==========================================
 
@@ -252,11 +370,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initParallax();
     initSmoothScroll();
-    initCustomCursor();
+    // initCustomCursor(); // 커스텀 커서 비활성화
     initCardTilt();
     initScrollProgress();
     initRippleEffect();
     initMagneticButtons();
+    initTimelineShowcase();
+    initMobileNavigation();
     
     // 모바일 감지
     if (window.innerWidth < 768) {

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase 설정 - 로컬 개발</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 1rem;
+            color: #236242;
+        }
+        .step {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .step h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .step ol {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .step li {
+            margin-bottom: 0.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: monospace;
+        }
+        input:focus {
+            outline: none;
+            border-color: #236242;
+        }
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: #236242;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #1a4d33;
+        }
+        .success {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 6px;
+            display: none;
+        }
+        .success.show {
+            display: block;
+        }
+        .info {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #e7f3ff;
+            border-left: 4px solid #236242;
+            border-radius: 4px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Supabase 로컬 개발 설정</h1>
+        
+        <div class="step">
+            <h2>1단계: Supabase 정보 확인</h2>
+            <ol>
+                <li><a href="https://supabase.com" target="_blank">Supabase 대시보드</a> 접속</li>
+                <li>프로젝트 선택 (또는 새로 생성)</li>
+                <li><strong>Settings</strong> → <strong>API</strong> 메뉴 클릭</li>
+                <li><strong>Project URL</strong>과 <strong>anon public key</strong> 복사</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h2>2단계: 설정 입력</h2>
+            <p style="margin-bottom: 1rem;">아래에 Supabase 정보를 입력하세요:</p>
+            
+            <form id="configForm">
+                <div class="form-group">
+                    <label for="supabaseUrl">Project URL</label>
+                    <input 
+                        type="text" 
+                        id="supabaseUrl" 
+                        placeholder="https://xxxxx.supabase.co"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="supabaseKey">Anon Public Key</label>
+                    <input 
+                        type="text" 
+                        id="supabaseKey" 
+                        placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                        required
+                    >
+                </div>
+                
+                <button type="submit">설정 저장</button>
+            </form>
+            
+            <div id="successMessage" class="success">
+                ✅ 설정이 저장되었습니다! 이제 <a href="contact.html">contact.html</a>에서 테스트하세요.
+            </div>
+        </div>
+
+        <div class="info">
+            <strong>💡 참고:</strong>
+            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                <li>설정은 브라우저의 로컬 스토리지에 저장됩니다</li>
+                <li>다른 브라우저나 시크릿 모드에서는 다시 설정해야 합니다</li>
+                <li>설정을 변경하려면 이 페이지를 다시 열고 새로 입력하세요</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 기존 설정 불러오기
+        window.addEventListener('DOMContentLoaded', function() {
+            try {
+                const stored = localStorage.getItem('supabase_config');
+                if (stored) {
+                    const config = JSON.parse(stored);
+                    if (config.url) {
+                        document.getElementById('supabaseUrl').value = config.url;
+                    }
+                    if (config.anonKey) {
+                        document.getElementById('supabaseKey').value = config.anonKey;
+                    }
+                }
+            } catch (error) {
+                console.warn('기존 설정을 불러올 수 없습니다:', error);
+            }
+        });
+
+        // 폼 제출
+        document.getElementById('configForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const url = document.getElementById('supabaseUrl').value.trim();
+            const key = document.getElementById('supabaseKey').value.trim();
+            
+            if (!url || !key) {
+                alert('모든 필드를 입력해주세요.');
+                return;
+            }
+            
+            try {
+                localStorage.setItem('supabase_config', JSON.stringify({
+                    url: url,
+                    anonKey: key
+                }));
+                
+                document.getElementById('successMessage').classList.add('show');
+                
+                // 3초 후 contact.html로 이동
+                setTimeout(() => {
+                    window.location.href = 'contact.html';
+                }, 2000);
+            } catch (error) {
+                alert('설정 저장 중 오류가 발생했습니다: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
+

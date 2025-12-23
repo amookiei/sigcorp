@@ -25,52 +25,59 @@
             <a href="index.html" class="logo">
                 <img src="images/siglogo.svg" alt="SIG CORPORATION" class="logo-img">
             </a>
-            <ul class="nav-menu">
-                <li>
-                    <a href="portfolio.html">
-                        <span class="nav-text">
-                            <span class="nav-text-ko">포트폴리오</span>
-                            <span class="nav-text-en">PORTFOLIO</span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="about.html">
-                        <span class="nav-text">
-                            <span class="nav-text-ko">회사 소개</span>
-                            <span class="nav-text-en">ABOUT US</span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="services.html">
-                        <span class="nav-text">
-                            <span class="nav-text-ko">사업분야</span>
-                            <span class="nav-text-en">SERVICES</span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="blog.html">
-                        <span class="nav-text">
-                            <span class="nav-text-ko">블로그</span>
-                            <span class="nav-text-en">BLOG</span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="contact.html">
-                        <span class="nav-text">
-                            <span class="nav-text-ko">제작문의</span>
-                            <span class="nav-text-en">CONTACT US</span>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-            <div class="nav-actions">
-                <span class="auth-badge" data-auth-state="badge"></span>
-                <button type="button" class="auth-button" data-auth-control="button">로그인</button>
-                <a href="contact.html" class="cta-button">상담 신청</a>
+            <button type="button" class="nav-toggle" aria-expanded="false" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-collapsible">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="portfolio.html">
+                            <span class="nav-text">
+                                <span class="nav-text-ko">포트폴리오</span>
+                                <span class="nav-text-en">PORTFOLIO</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html">
+                            <span class="nav-text">
+                                <span class="nav-text-ko">회사 소개</span>
+                                <span class="nav-text-en">ABOUT US</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="services.html">
+                            <span class="nav-text">
+                                <span class="nav-text-ko">사업분야</span>
+                                <span class="nav-text-en">SERVICES</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html">
+                            <span class="nav-text">
+                                <span class="nav-text-ko">블로그</span>
+                                <span class="nav-text-en">BLOG</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <span class="nav-text">
+                                <span class="nav-text-ko">제작문의</span>
+                                <span class="nav-text-en">CONTACT US</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <span class="auth-badge" data-auth-state="badge"></span>
+                    <button type="button" class="auth-button" data-auth-control="button">로그인</button>
+                    <a href="contact.html" class="cta-button">상담 신청</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -116,12 +123,12 @@
             <p class="section-subtitle">데이터로 검증된 성과를 확인하세요</p>
             
             <!-- Filter Buttons -->
-            <div class="portfolio-filter">
-                <button class="filter-btn active" onclick="filterProjects('all')">전체</button>
-                <button class="filter-btn" onclick="filterProjects('wadiz')">와디즈</button>
-                <button class="filter-btn" onclick="filterProjects('commerce')">커머스</button>
-                <button class="filter-btn" onclick="filterProjects('branding')">브랜딩</button>
-                <button class="filter-btn" onclick="filterProjects('marketing')">마케팅</button>
+            <div class="portfolio-filter" id="portfolioFilter">
+                <button class="filter-btn active" data-filter="all">전체</button>
+                <button class="filter-btn" data-filter="wadiz">와디즈</button>
+                <button class="filter-btn" data-filter="commerce">커머스</button>
+                <button class="filter-btn" data-filter="branding">브랜딩</button>
+                <button class="filter-btn" data-filter="marketing">마케팅</button>
             </div>
 
             <!-- Portfolio Grid (Generated by JS) -->
@@ -132,7 +139,7 @@
     <!-- ==========================================
          Admin Mode Trigger
          ========================================== -->
-    <button class="admin-trigger" onclick="showAdminLogin()" aria-label="관리자 모드">⚙️</button>
+    <button class="admin-trigger" id="adminTrigger" aria-label="관리자 모드">⚙️</button>
 
     <!-- ==========================================
          Admin Panel
@@ -141,13 +148,13 @@
         <div class="admin-container">
             <div class="admin-header">
                 <h2>🔒 관리자 모드 - 포트폴리오 관리</h2>
-                <button class="admin-close" onclick="closeAdmin()">닫기</button>
+                <button class="admin-close" id="adminClose">닫기</button>
             </div>
             
             <!-- Admin Projects Container (Generated by JS) -->
             <div id="adminProjects" class="admin-projects"></div>
             
-            <button class="admin-add-project" onclick="addNewProject()">
+            <button class="admin-add-project" id="adminAddProject">
                  새 프로젝트 추가
             </button>
         </div>
@@ -158,7 +165,7 @@
          ========================================== -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()" aria-label="닫기">×</button>
+            <button class="modal-close" id="modalClose" aria-label="닫기">×</button>
             
             <!-- Modal Header -->
             <div class="modal-header">
@@ -199,6 +206,25 @@
     </div>
 
     <!-- ==========================================
+         Edit Project Modal
+         ========================================== -->
+    <div id="editProjectModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <button class="modal-close" id="editModalClose" aria-label="닫기">×</button>
+            
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2>프로젝트 편집</h2>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body" id="editModalBody">
+                <!-- 편집 폼이 여기에 동적으로 생성됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
          Footer
          ========================================== -->
     <footer class="footer">
@@ -220,7 +246,21 @@
          JavaScript
          ========================================== -->
     <script src="js/auth.js"></script>
-    <script src="js/portfolio.js"></script>
+    <script type="module" src="js/portfolio.js"></script>
     <script src="js/interactive.js"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#236242',
+                        'accent-gold': '#32D27F',
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>

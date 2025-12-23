@@ -2,7 +2,43 @@
  * Blog Experience - Channel.io 스타일 블로그 + 노션형 에디터
  */
 
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+// Supabase 동적 로딩 (모듈 import 대신)
+let createClient = null;
+
+async function loadSupabase() {
+    if (createClient) return;
+    
+    try {
+        // CDN에서 동적으로 로드
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.textContent = `
+            import { createClient as create } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+            window.__supabaseCreateClient = create;
+        `;
+        document.head.appendChild(script);
+        
+        // 로드 완료 대기
+        await new Promise((resolve) => {
+            const checkInterval = setInterval(() => {
+                if (window.__supabaseCreateClient) {
+                    clearInterval(checkInterval);
+                    createClient = window.__supabaseCreateClient;
+                    resolve();
+                }
+            }, 100);
+            
+            // 타임아웃 (5초)
+            setTimeout(() => {
+                clearInterval(checkInterval);
+                console.warn('[Blog] Supabase 로드 실패');
+                resolve();
+            }, 5000);
+        });
+    } catch (error) {
+        console.warn('[Blog] Supabase 로드 중 오류:', error);
+    }
+}
 
 const BLOG_STORAGE_KEY = 'sigBlogPosts';
 const SUPABASE_TABLE = 'blog_posts';
@@ -242,10 +278,18 @@ async function initializeSupabase() {
     }
 
     try {
-        supabaseClient = createClient(config.url, config.anonKey, {
-            auth: { persistSession: false }
-        });
-        supabaseAvailable = true;
+        if (!createClient) {
+            await loadSupabase();
+        }
+        if (createClient) {
+            supabaseClient = createClient(config.url, config.anonKey, {
+                auth: { persistSession: false }
+            });
+            supabaseAvailable = true;
+        } else {
+            supabaseAvailable = false;
+            console.warn('[Blog] Supabase 클라이언트를 로드할 수 없습니다.');
+        }
     } catch (error) {
         supabaseAvailable = false;
         console.warn('[Blog] Supabase 클라이언트 초기화 중 오류가 발생했습니다.', error);

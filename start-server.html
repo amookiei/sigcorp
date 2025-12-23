@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG Corporation - 로컬 서버 시작</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #083516 0%, #0c1f12 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .warning {
+            background: rgba(255, 193, 7, 0.1);
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .warning-title {
+            color: #ffc107;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .steps {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .steps h3 {
+            margin-bottom: 1rem;
+            color: #3D9D5A;
+        }
+        .step {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        .step::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3D9D5A;
+            font-weight: bold;
+        }
+        .code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 0.5rem 0;
+            display: block;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background: #3D9D5A;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #2d7d4a;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 SIG Corporation</h1>
+        <p>포트폴리오 사이트를 실행하려면 로컬 서버가 필요합니다</p>
+        
+        <div class="warning">
+            <div class="warning-title">⚠️ CORS 오류 발생</div>
+            <p>file:// 프로토콜로는 일부 기능이 작동하지 않습니다.<br>
+            아래 방법 중 하나를 선택하여 로컬 서버를 시작해주세요.</p>
+        </div>
+
+        <div class="steps">
+            <h3>방법 1: VS Code Live Server (추천)</h3>
+            <div class="step">VS Code 확장 프로그램에서 "Live Server" 설치</div>
+            <div class="step">index.html 파일 우클릭 → "Open with Live Server"</div>
+            <div class="step">자동으로 브라우저에서 열림</div>
+        </div>
+
+        <div class="steps">
+            <h3>방법 2: Python 서버</h3>
+            <div class="step">터미널/명령 프롬프트를 열고 프로젝트 폴더로 이동</div>
+            <div class="step">
+                아래 명령어 실행:
+                <code class="code">python -m http.server 8000</code>
+            </div>
+            <div class="step">브라우저에서 http://localhost:8000 접속</div>
+        </div>
+
+        <div class="steps">
+            <h3>방법 3: Node.js 서버</h3>
+            <div class="step">
+                터미널에서 실행:
+                <code class="code">npx http-server -p 8000</code>
+            </div>
+            <div class="step">브라우저에서 http://localhost:8000 접속</div>
+        </div>
+
+        <div class="btn-group">
+            <a href="index.html" class="btn btn-primary">
+                index.html 열기 (서버 실행 후)
+            </a>
+            <button onclick="window.location.reload()" class="btn btn-secondary">
+                새로고침
+            </button>
+        </div>
+
+        <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+            서버를 시작한 후에는 file:// 대신 http://localhost로 접속하세요
+        </p>
+    </div>
+
+    <script>
+        // 현재 프로토콜 확인
+        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+            // 이미 서버에서 실행중이면 자동으로 index.html로 리다이렉트
+            setTimeout(() => {
+                if (confirm('로컬 서버가 실행중입니다! index.html로 이동하시겠습니까?')) {
+                    window.location.href = 'index.html';
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
+

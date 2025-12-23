@@ -143,9 +143,12 @@
                 name: ADMIN_NAME,
                 loggedInAt: new Date().toISOString()
             });
-            notifyAuthChange();
             closeModal();
+            notifyAuthChange();
             flushPendingActions();
+            
+            // 로그인 성공 알림
+            alert('✅ 관리자 로그인에 성공했습니다!');
         } else {
             showError('로그인 정보가 올바르지 않습니다. 다시 확인해주세요.');
         }
@@ -166,20 +169,24 @@
     }
 
     function logout() {
-        setState(null);
-        notifyAuthChange();
+        if (confirm('관리자 모드에서 로그아웃하시겠습니까?')) {
+            setState(null);
+            notifyAuthChange();
+            alert('로그아웃되었습니다.');
+        }
     }
 
     function updateAuthControls() {
         const buttons = document.querySelectorAll('[data-auth-control="button"]');
         const state = getState();
+        const adminActive = isAdmin();
 
         buttons.forEach((button) => {
             if (!button.dataset.initialLabel) {
                 button.dataset.initialLabel = button.textContent.trim() || '로그인';
             }
 
-            if (isAdmin()) {
+            if (adminActive) {
                 button.textContent = '관리자 로그아웃';
                 button.classList.add('is-admin');
                 button.setAttribute('aria-pressed', 'true');
@@ -190,11 +197,12 @@
             }
         });
 
-        document.body.classList.toggle('auth-admin-active', isAdmin());
+        // body에 관리자 클래스 추가/제거
+        document.body.classList.toggle('auth-admin-active', adminActive);
 
         const authBadge = document.querySelector('[data-auth-state="badge"]');
         if (authBadge) {
-            if (isAdmin()) {
+            if (adminActive) {
                 authBadge.textContent = state?.name || '관리자';
                 authBadge.classList.add('visible');
             } else {
@@ -202,6 +210,28 @@
                 authBadge.classList.remove('visible');
             }
         }
+
+        // 블로그 글쓰기 버튼 표시/숨김
+        const createButton = document.getElementById('openBlogEditor');
+        if (createButton) {
+            createButton.style.display = adminActive ? 'flex' : 'none';
+        }
+
+        // 포트폴리오 관리자 트리거 버튼 표시/숨김
+        const adminTrigger = document.getElementById('adminTrigger');
+        if (adminTrigger) {
+            adminTrigger.style.display = adminActive ? 'flex' : 'none';
+        }
+
+        // 포트폴리오 편집 버튼들 표시/숨김
+        document.querySelectorAll('.portfolio-item-edit-btn').forEach(btn => {
+            btn.style.display = adminActive ? 'flex' : 'none';
+        });
+
+        // 블로그 포스트 액션 버튼 표시/숨김
+        document.querySelectorAll('.blog-card-actions').forEach(actions => {
+            actions.style.display = adminActive ? 'block' : 'none';
+        });
     }
 
     function notifyAuthChange() {
@@ -211,6 +241,8 @@
             state: getState()
         };
         document.dispatchEvent(new CustomEvent(AUTH_EVENT, { detail }));
+        
+        console.log('[SIGAuth] 인증 상태 변경:', detail);
     }
 
     function requireAdmin(callback) {
@@ -240,12 +272,29 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // 페이지 로드시 초기화
+    function initialize() {
         ensureModal();
         bindControls();
         updateAuthControls();
-        notifyAuthChange();
-    });
+        
+        // 초기 상태 알림
+        if (isAdmin()) {
+            console.log('[SIGAuth] 관리자로 로그인되어 있습니다.');
+        }
+        
+        // 다른 모듈들에게 초기 상태 알림
+        setTimeout(() => {
+            notifyAuthChange();
+        }, 100);
+    }
+
+    // DOM 로드 완료시 초기화
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+        initialize();
+    }
 
     // 퍼블릭 API 노출
     window.SIGAuth = {
@@ -256,4 +305,3 @@
         getState
     };
 })();
-
