@@ -279,13 +279,19 @@ body.nav-open .nav-toggle span:nth-child(3) {
 .stats-banner-main.fullpage-section {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 80px;
 }
 
 .stats-banner-main {
     background-image: none;
     background-color: #000000;
+}
+
+.stats-banner-main .stats-container {
+    margin-bottom: 80px;
 }
 
 /* 포트폴리오 페이지 - GIF 배경 */
@@ -392,6 +398,92 @@ body.nav-open .nav-toggle span:nth-child(3) {
 .stat-item p {
     font-size: 1rem;
     opacity: 0.9;
+}
+
+/* ========================================= */
+/* Partners Section */
+/* ========================================= */
+
+.partners-section {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem 80px;
+    text-align: center;
+}
+
+.partners-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.partners-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.partners-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partners-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .stats-banner-main.fullpage-section {
+        padding-top: 60px;
+    }
+    
+    .stats-banner-main .stats-container {
+        margin-bottom: 60px;
+    }
+    
+    .partners-section {
+        padding: 0 1.5rem 60px;
+    }
+    
+    .partners-title {
+        font-size: 2rem;
+    }
+    
+    .partners-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-banner-main.fullpage-section {
+        padding-top: 40px;
+    }
+    
+    .stats-banner-main .stats-container {
+        margin-bottom: 40px;
+    }
+    
+    .partners-section {
+        padding: 0 1rem 40px;
+    }
+    
+    .partners-title {
+        font-size: 1.75rem;
+    }
+    
+    .partners-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* ========================================= */
