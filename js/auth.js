@@ -261,6 +261,71 @@
     }
 
     function bindControls() {
+        // 로그인 버튼은 숨겨져 있으므로 이벤트 바인딩 제거
+        // 대신 로고 이스터에그 기능 추가
+        
+        // 로고 이스터에그: 5초 이상 누르면 로그인 창 열기
+        const logo = document.querySelector('.logo, .logo-img');
+        if (logo) {
+            let pressStartTime = null;
+            let pressTimer = null;
+            
+            logo.addEventListener('mousedown', function(e) {
+                pressStartTime = Date.now();
+                pressTimer = setTimeout(() => {
+                    // 5초 이상 누르고 있으면 로그인 창 열기
+                    if (Date.now() - pressStartTime >= 5000) {
+                        e.preventDefault();
+                        openModal();
+                    }
+                }, 5000);
+            });
+            
+            logo.addEventListener('mouseup', function() {
+                if (pressTimer) {
+                    clearTimeout(pressTimer);
+                    pressTimer = null;
+                }
+                pressStartTime = null;
+            });
+            
+            logo.addEventListener('mouseleave', function() {
+                if (pressTimer) {
+                    clearTimeout(pressTimer);
+                    pressTimer = null;
+                }
+                pressStartTime = null;
+            });
+            
+            // 터치 이벤트 지원 (모바일)
+            logo.addEventListener('touchstart', function(e) {
+                pressStartTime = Date.now();
+                pressTimer = setTimeout(() => {
+                    if (Date.now() - pressStartTime >= 5000) {
+                        e.preventDefault();
+                        openModal();
+                    }
+                }, 5000);
+            });
+            
+            logo.addEventListener('touchend', function() {
+                if (pressTimer) {
+                    clearTimeout(pressTimer);
+                    pressTimer = null;
+                }
+                pressStartTime = null;
+            });
+            
+            logo.addEventListener('touchcancel', function() {
+                if (pressTimer) {
+                    clearTimeout(pressTimer);
+                    pressTimer = null;
+                }
+                pressStartTime = null;
+            });
+        }
+        
+        // 기존 로그인 버튼 이벤트는 유지 (숨겨져 있지만 관리자 로그아웃용)
         document.querySelectorAll('[data-auth-control="button"]').forEach((button) => {
             button.addEventListener('click', () => {
                 if (isAdmin()) {
@@ -275,8 +340,20 @@
     // 페이지 로드시 초기화
     function initialize() {
         ensureModal();
-        bindControls();
-        updateAuthControls();
+        
+        // DOM이 완전히 로드된 후 바인딩 (로고 요소가 있을 때)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                bindControls();
+                updateAuthControls();
+            });
+        } else {
+            // 약간의 지연을 두어 모든 요소가 로드되도록
+            setTimeout(() => {
+                bindControls();
+                updateAuthControls();
+            }, 100);
+        }
         
         // 초기 상태 알림
         if (isAdmin()) {
@@ -286,7 +363,7 @@
         // 다른 모듈들에게 초기 상태 알림
         setTimeout(() => {
             notifyAuthChange();
-        }, 100);
+        }, 200);
     }
 
     // DOM 로드 완료시 초기화

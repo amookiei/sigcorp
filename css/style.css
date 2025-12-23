@@ -68,12 +68,23 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: opacity 0.2s ease;
+}
+
+.logo:active {
+    opacity: 0.7;
 }
 
 .logo-img {
     height: 40px;
     width: auto;
     display: block;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .nav-menu {
@@ -183,6 +194,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 }
 
 .auth-button {
+    display: none !important; /* 로그인 버튼 숨기기 - 이스터에그로 변경 */
     padding: 0.65rem 1.6rem;
     border-radius: 999px;
     border: 1px solid var(--border-color);
