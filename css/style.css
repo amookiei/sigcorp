@@ -93,6 +93,23 @@ body {
     list-style: none;
 }
 
+/* 사업분야 메뉴 숨기기 */
+.nav-menu li a[href="services.html"],
+.nav-menu li a[href*="services.html"] {
+    display: none !important;
+}
+
+/* li 요소 숨기기 (브라우저 호환성) */
+.nav-menu li:has(a[href="services.html"]),
+.nav-menu li:has(a[href*="services.html"]) {
+    display: none !important;
+}
+
+/* :has() 미지원 브라우저를 위한 대체 방법 */
+.nav-menu li:nth-child(3) {
+    display: none !important;
+}
+
 .nav-collapsible {
     display: flex;
     align-items: center;
@@ -281,18 +298,14 @@ body.nav-open .nav-toggle span:nth-child(3) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 80px 0;
+    justify-content: center;
+    padding: 100px 0;
     overflow: visible;
 }
 
 .stats-banner-main {
     background-image: none;
     background-color: #000000;
-}
-
-.stats-banner-main .stats-container {
-    margin-bottom: 80px;
 }
 
 /* 포트폴리오 페이지 - GIF 배경 */
@@ -468,11 +481,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 @media (max-width: 768px) {
     .stats-banner-main.fullpage-section {
-        padding: 60px 0;
-    }
-    
-    .stats-banner-main .stats-container {
-        margin-bottom: 60px;
+        padding: 80px 0;
     }
     
     .partners-section {
@@ -491,11 +500,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 @media (max-width: 480px) {
     .stats-banner-main.fullpage-section {
-        padding: 40px 0;
-    }
-    
-    .stats-banner-main .stats-container {
-        margin-bottom: 40px;
+        padding: 60px 0;
     }
     
     .partners-section {
@@ -2615,6 +2620,12 @@ body.nav-open .nav-toggle span:nth-child(3) {
     gap: 2rem;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+}
+
+/* 푸터에서도 사업분야 링크 숨기기 */
+.footer-links a[href="services.html"],
+.footer-links a[href*="services.html"] {
+    display: none;
 }
 
 .footer-links a {
