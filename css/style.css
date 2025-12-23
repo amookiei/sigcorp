@@ -277,12 +277,13 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 /* 메인 페이지 - 블랙 배경 */
 .stats-banner-main.fullpage-section {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 80px;
+    padding: 80px 0;
+    overflow: visible;
 }
 
 .stats-banner-main {
@@ -408,8 +409,9 @@ body.nav-open .nav-toggle span:nth-child(3) {
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 2rem 80px;
+    padding: 0 2rem 100px;
     text-align: center;
+    overflow: visible;
 }
 
 .partners-title {
@@ -437,16 +439,20 @@ body.nav-open .nav-toggle span:nth-child(3) {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
+    padding: 0;
 }
 
 .partners-image {
     max-width: 100%;
+    width: 100%;
     height: auto;
     display: block;
     border-radius: 12px;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s ease-out 0.3s forwards;
+    object-fit: contain;
 }
 
 @keyframes fadeInUp {
@@ -462,7 +468,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 @media (max-width: 768px) {
     .stats-banner-main.fullpage-section {
-        padding-top: 60px;
+        padding: 60px 0;
     }
     
     .stats-banner-main .stats-container {
@@ -470,7 +476,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
     }
     
     .partners-section {
-        padding: 0 1.5rem 60px;
+        padding: 0 1.5rem 80px;
     }
     
     .partners-title {
@@ -485,7 +491,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 @media (max-width: 480px) {
     .stats-banner-main.fullpage-section {
-        padding-top: 40px;
+        padding: 40px 0;
     }
     
     .stats-banner-main .stats-container {
@@ -493,7 +499,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
     }
     
     .partners-section {
-        padding: 0 1rem 40px;
+        padding: 0 1rem 60px;
     }
     
     .partners-title {
