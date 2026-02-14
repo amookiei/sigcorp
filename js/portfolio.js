@@ -598,22 +598,24 @@ function renderPortfolio() {
     
     entries.forEach(([projectId, project], index) => {
         if (!project) return;
-        
+
         const item = document.createElement('div');
         item.className = 'portfolio-item';
+        // First item spans 2 columns for featured layout
+        if (index === 0) item.classList.add('portfolio-item--large');
         item.dataset.category = project.categoryTag || 'all';
         item.style.opacity = '0';
         item.style.transform = 'translateY(20px)';
-        
+
         // 이미지가 있으면 표시, 없으면 그라데이션 배경
         let imageHtml = '';
         if (project.images && project.images.length > 0) {
             const firstImage = project.images[0];
             imageHtml = `<img src="${firstImage}" alt="${project.title || '프로젝트'}" class="portfolio-item-image">`;
         } else {
-            imageHtml = `<div style="width: 100%; height: 100%; background: ${project.gradient || 'linear-gradient(135deg, #236242 0%, #1a4d33 100%)'};"></div>`;
+            imageHtml = `<div style="width: 100%; height: 100%; background: ${project.gradient || 'linear-gradient(135deg, #171717 0%, #404040 100%)'};"></div>`;
         }
-        
+
         // 관리자 모드일 때만 편집 버튼 표시
         const editButton = isAdmin ? `
             <button class="portfolio-item-edit-btn" onclick="event.stopPropagation(); openEditModal('${projectId}')" aria-label="편집" style="display: flex;">
@@ -622,34 +624,34 @@ function renderPortfolio() {
                 </svg>
             </button>
         ` : '';
-        
+
         item.innerHTML = `
             ${editButton}
             <div class="portfolio-item-image-wrapper">
                 ${imageHtml}
             </div>
-            <div class="portfolio-box-content">
-                <span class="portfolio-tag">${project.tag || '프로젝트'}</span>
-                <h3 class="portfolio-title">${project.title || '제목 없음'}</h3>
-                <p class="portfolio-description">${project.description || ''}</p>
-                <span class="portfolio-item-cta">
-                    자세히 보기
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
+            <div class="portfolio-item-body">
+                <h3 class="portfolio-item-title">${project.title || '제목 없음'}</h3>
+                <p class="portfolio-item-tags">${project.category || project.tag || ''}</p>
+                <span class="portfolio-item-cta">View Project →</span>
             </div>
         `;
-        
-        // 클릭 이벤트
+
+        // 클릭 이벤트 - project detail page 또는 모달
         item.addEventListener('click', (e) => {
             if (!e.target.closest('.portfolio-item-edit-btn')) {
-                openModal(projectId);
+                // index.html에서는 project.html로 이동, portfolio.html에서는 모달
+                const isMainPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+                if (isMainPage) {
+                    window.location.href = `project.html?id=${projectId}`;
+                } else {
+                    openModal(projectId);
+                }
             }
         });
-        
+
         grid.appendChild(item);
-        
+
         // 애니메이션
         setTimeout(() => {
             item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

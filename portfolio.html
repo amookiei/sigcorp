@@ -3,125 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="시그코퍼레이션 포트폴리오 - 와디즈, 커머스, 브랜딩 전문">
-    <meta name="keywords" content="와디즈, 펀딩, 마케팅, 브랜딩, 상세페이지, 포트폴리오">
-    <title>포트폴리오 - 시그코퍼레이션 | SIG Corporation</title>
-    
-    <!-- Favicon -->
+    <meta name="description" content="SIG STUDIO — All Projects">
+    <title>Projects — SIG STUDIO</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Pretendard Font -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 </head>
 <body>
-    <!-- ==========================================
-         Header & Navigation
-         ========================================== -->
+    <!-- Header -->
     <header class="header">
         <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="images/siglogo.svg" alt="SIG CORPORATION" class="logo-img">
-            </a>
+            <a href="index.html" class="site-logo">SIG STUDIO</a>
             <button type="button" class="nav-toggle" aria-expanded="false" aria-label="메뉴 열기">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <div class="nav-collapsible">
-                <ul class="nav-menu">
-                    <li>
-                        <a href="portfolio.html">
-                            <span class="nav-text">
-                                <span class="nav-text-ko">포트폴리오</span>
-                                <span class="nav-text-en">PORTFOLIO</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="about.html">
-                            <span class="nav-text">
-                                <span class="nav-text-ko">회사 소개</span>
-                                <span class="nav-text-en">ABOUT US</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="services.html">
-                            <span class="nav-text">
-                                <span class="nav-text-ko">사업분야</span>
-                                <span class="nav-text-en">SERVICES</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="blog.html">
-                            <span class="nav-text">
-                                <span class="nav-text-ko">블로그</span>
-                                <span class="nav-text-en">BLOG</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contact.html">
-                            <span class="nav-text">
-                                <span class="nav-text-ko">제작문의</span>
-                                <span class="nav-text-en">CONTACT US</span>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="nav-actions">
-                    <span class="auth-badge" data-auth-state="badge"></span>
-                    <button type="button" class="auth-button" data-auth-control="button">로그인</button>
-                    <a href="contact.html" class="cta-button">상담 신청</a>
-                </div>
-            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="portfolio.html" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- ==========================================
-         Page Header
-         ========================================== -->
+    <!-- Page Header -->
     <section class="page-header">
-        <h1>포트폴리오</h1>
-        <p>시그코퍼레이션이 만들어낸 성공 스토리</p>
+        <h1>Projects</h1>
+        <p>SIG STUDIO가 만들어낸 작업들</p>
     </section>
 
-    <!-- ==========================================
-         Stats Banner
-         ========================================== -->
-    <section class="stats-banner">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h3 data-count="12476">0%</h3>
-                <p>누적 펀딩률</p>
-            </div>
-            <div class="stat-item">
-                <h3 data-count="2.86" data-suffix="억+">0억+</h3>
-                <p>누적 펀딩액</p>
-            </div>
-            <div class="stat-item">
-                <h3 data-count="9" data-suffix="개">0개</h3>
-                <p>프로젝트 기획</p>
-            </div>
-            <div class="stat-item">
-                <h3 data-count="16" data-suffix="회">0회</h3>
-                <p>앵콜 포함 펀딩 오픈</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-         Portfolio Section
-         ========================================== -->
+    <!-- Portfolio Section -->
     <section class="portfolio-section">
         <div class="container">
-            <h2 class="section-title">주요 프로젝트</h2>
-            <p class="section-subtitle">데이터로 검증된 성과를 확인하세요</p>
-            
             <!-- Filter Buttons -->
             <div class="portfolio-filter" id="portfolioFilter">
                 <button class="filter-btn active" data-filter="all">전체</button>
@@ -131,43 +45,30 @@
                 <button class="filter-btn" data-filter="marketing">마케팅</button>
             </div>
 
-            <!-- Portfolio Grid (Generated by JS) -->
+            <!-- Portfolio Grid -->
             <div class="portfolio-grid" id="portfolioGrid"></div>
         </div>
     </section>
 
-    <!-- ==========================================
-         Admin Mode Trigger
-         ========================================== -->
-    <button class="admin-trigger" id="adminTrigger" aria-label="관리자 모드">⚙️</button>
+    <!-- Admin Mode Trigger -->
+    <button class="admin-trigger" id="adminTrigger" aria-label="관리자 모드">&#9881;</button>
 
-    <!-- ==========================================
-         Admin Panel
-         ========================================== -->
+    <!-- Admin Panel -->
     <div id="adminPanel" class="admin-panel">
         <div class="admin-container">
             <div class="admin-header">
-                <h2>🔒 관리자 모드 - 포트폴리오 관리</h2>
+                <h2>관리자 모드 - 포트폴리오 관리</h2>
                 <button class="admin-close" id="adminClose">닫기</button>
             </div>
-            
-            <!-- Admin Projects Container (Generated by JS) -->
             <div id="adminProjects" class="admin-projects"></div>
-            
-            <button class="admin-add-project" id="adminAddProject">
-                 새 프로젝트 추가
-            </button>
+            <button class="admin-add-project" id="adminAddProject">새 프로젝트 추가</button>
         </div>
     </div>
 
-    <!-- ==========================================
-         Project Detail Modal
-         ========================================== -->
+    <!-- Project Detail Modal -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose" aria-label="닫기">×</button>
-            
-            <!-- Modal Header -->
+            <button class="modal-close" id="modalClose" aria-label="닫기">&times;</button>
             <div class="modal-header">
                 <h2 id="modalTitle"></h2>
                 <div class="project-meta">
@@ -175,12 +76,8 @@
                     <span class="meta-item" id="modalDate"></span>
                 </div>
             </div>
-            
-            <!-- Modal Body -->
             <div class="modal-body">
                 <p class="project-description" id="modalDescription"></p>
-                
-                <!-- Statistics -->
                 <div class="project-stats">
                     <div class="stat-box">
                         <div class="stat-box-value" id="statValue1"></div>
@@ -195,8 +92,6 @@
                         <div class="stat-box-label" id="statLabel3"></div>
                     </div>
                 </div>
-                
-                <!-- Features -->
                 <div class="project-details">
                     <h3>프로젝트 특징</h3>
                     <ul class="project-features" id="modalFeatures"></ul>
@@ -205,61 +100,43 @@
         </div>
     </div>
 
-    <!-- ==========================================
-         Edit Project Modal
-         ========================================== -->
+    <!-- Edit Project Modal -->
     <div id="editProjectModal" class="modal">
         <div class="modal-content" style="max-width: 900px;">
-            <button class="modal-close" id="editModalClose" aria-label="닫기">×</button>
-            
-            <!-- Modal Header -->
+            <button class="modal-close" id="editModalClose" aria-label="닫기">&times;</button>
             <div class="modal-header">
                 <h2>프로젝트 편집</h2>
             </div>
-            
-            <!-- Modal Body -->
-            <div class="modal-body" id="editModalBody">
-                <!-- 편집 폼이 여기에 동적으로 생성됩니다 -->
-            </div>
+            <div class="modal-body" id="editModalBody"></div>
         </div>
     </div>
 
-    <!-- ==========================================
-         Footer
-         ========================================== -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="portfolio.html">포트폴리오</a>
-                <a href="about.html">회사 소개</a>
-                <a href="services.html">사업분야</a>
-                <a href="blog.html">블로그</a>
-                <a href="contact.html">제작문의</a>
+        <div class="footer-inner">
+            <span class="footer-brand">#SIGSTUDIO</span>
+            <div class="footer-right">
+                <div class="footer-social">
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Behance</a>
+                </div>
+                <span class="footer-copy">&copy; 2026 SIG STUDIO. All rights reserved.</span>
             </div>
-            <p style="opacity: 0.8; margin-top: 2rem;">
-                © 2024 SIG CORPORATION. All rights reserved.
-            </p>
         </div>
     </footer>
 
-    <!-- ==========================================
-         JavaScript
-         ========================================== -->
     <script src="js/auth.js"></script>
     <script type="module" src="js/portfolio.js"></script>
-    <script src="js/interactive.js"></script>
-    
-    <!-- Tailwind Config -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-blue': '#236242',
-                        'accent-gold': '#32D27F',
-                    }
-                }
-            }
+        // Navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.body.classList.toggle('nav-open');
+                navToggle.setAttribute('aria-expanded',
+                    document.body.classList.contains('nav-open'));
+            });
         }
     </script>
 </body>

@@ -3,789 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="시그코퍼레이션 - 와디즈, 커머스, 브랜딩 전문 에이전시">
-    <title>시그코퍼레이션 | SIG Corporation - 와디즈 펀딩 & 마케팅 전문</title>
+    <meta name="description" content="SIG STUDIO — 브랜드 아이덴티티, 디지털 경험, 커뮤니케이션 디자인 스튜디오">
+    <title>SIG STUDIO</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-    <style>
-        /* Full Page Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .fullpage-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 80px 2rem;
-        }
-
-        .hero-section {
-            background-image: url('images/hero-bg.gif');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: transparent;
-            color: white;
-            margin-top: 80px;
-            text-align: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: calc(100vh - 80px);
-        }
-        
-        .hero-section::before {
-            display: none;
-        }
-        
-        .hero-section > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-section h1 {
-            font-size: 4rem;
-            font-weight: 900; /* Black */
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero-section .highlight {
-            color: var(--accent-color);
-        }
-
-        .hero-section .hero-eyebrow {
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            opacity: 0.7;
-        }
-
-        .hero-section .hero-lead {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .hero-tags {
-            display: flex;
-            gap: 0.85rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-
-        .hero-tag {
-            padding: 0.55rem 1.3rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            backdrop-filter: blur(6px);
-            transition: all 0.3s ease;
-        }
-
-        .hero-tag:hover {
-            background: rgba(255, 255, 255, 0.22);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-btn {
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            font-weight: 700; /* Bold */
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .hero-btn.primary {
-            background: var(--accent-bg);
-            color: white;
-        }
-
-        .hero-btn.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .features-section.fullpage-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-        }
-
-        .features-section {
-            padding: 100px 2rem;
-            background: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--secondary-gray);
-            border-radius: 20px;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            color: var(--text-gray);
-            line-height: 1.8;
-        }
-
-        .feature-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            background: rgba(61, 157, 90, 0.12);
-            color: var(--accent-color);
-            padding: 0.45rem 0.9rem;
-            border-radius: 999px;
-            margin-bottom: 1.5rem;
-        }
-
-        .timeline-section {
-            background: linear-gradient(180deg, #f8fbf4 0%, #ffffff 100%);
-            padding: 120px 2rem;
-        }
-
-        .timeline-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .timeline-title {
-            font-size: 2.6rem;
-            font-weight: 900;
-            margin-bottom: 1.25rem;
-        }
-
-        .timeline-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin-bottom: 3.5rem;
-        }
-
-        .timeline-track {
-            position: relative;
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            overflow-y: visible;
-            padding: 2rem 1rem;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            scroll-behavior: smooth;
-        }
-
-        .timeline-track::before {
-            content: "";
-            position: absolute;
-            inset: auto 0 2.6rem 0;
-            height: 2px;
-            background: linear-gradient(90deg, rgba(61, 157, 90, 0.15) 0%, rgba(61, 157, 90, 0.45) 50%, rgba(61, 157, 90, 0.15) 100%);
-            pointer-events: none;
-        }
-
-        .timeline-track::-webkit-scrollbar {
-            display: none;
-        }
-
-        .timeline-item {
-            --distance: 3;
-            flex: 0 0 280px;
-            background: white;
-            border-radius: 20px;
-            padding: 1.8rem 1.6rem 2.2rem;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
-            position: relative;
-            scroll-snap-align: center;
-            transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.5s ease, opacity 0.45s ease, filter 0.45s ease;
-            opacity: calc(1 - var(--distance) * 0.18);
-            filter: blur(calc(var(--distance) * 0.6px));
-            transform: translateY(calc(var(--distance) * 6px));
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            bottom: -2.6rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 3px solid white;
-            background: var(--accent-color);
-            box-shadow: 0 0 0 6px rgba(61, 157, 90, 0.05);
-            opacity: calc(1 - var(--distance) * 0.18);
-            transition: opacity 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .timeline-item.is-active {
-            transform: translateY(-12px);
-            box-shadow: 0 26px 60px rgba(8, 53, 22, 0.18);
-            opacity: 1;
-            filter: none;
-        }
-
-        .timeline-item.is-active::before {
-            box-shadow: 0 0 0 10px rgba(61, 157, 90, 0.25);
-            opacity: 1;
-        }
-
-        .timeline-item:focus-visible {
-            outline: 2px solid var(--accent-color);
-            outline-offset: 8px;
-        }
-
-        .timeline-meta {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.6rem;
-            margin-bottom: 1.4rem;
-        }
-
-        .timeline-date {
-            font-size: 0.92rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--accent-color);
-        }
-
-        .timeline-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.35rem 0.75rem;
-            border-radius: 999px;
-            background: rgba(8, 53, 22, 0.08);
-            color: var(--accent-bg);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .timeline-item h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            text-align: left;
-        }
-
-        .timeline-item p {
-            color: var(--text-gray);
-            text-align: left;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        .cta-section.fullpage-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background: var(--accent-bg);
-        }
-
-        .cta-section {
-            background: var(--accent-bg);
-            color: white;
-            padding: 100px 2rem;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 3rem;
-            font-weight: 900; /* Black */
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-section p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-        }
-
-        .cta-section .cta-button {
-            background: white;
-            color: var(--primary-black);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            display: inline-block;
-            transition: all 0.3s;
-        }
-
-        .cta-section .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        @media (max-width: 768px) {
-            .fullpage-section {
-                min-height: auto;
-                padding: 90px 1.5rem;
-            }
-            .hero-section {
-                margin-top: 70px;
-                min-height: auto;
-            }
-            .hero-section h1 {
-                font-size: 2.2rem;
-            }
-            .hero-section .hero-eyebrow {
-                font-size: 0.85rem;
-                margin-bottom: 1.2rem;
-            }
-            .hero-section .hero-lead {
-                font-size: 1.05rem;
-                margin-bottom: 1.8rem;
-            }
-            .hero-tags {
-                gap: 0.65rem;
-                margin-bottom: 2.4rem;
-            }
-            .hero-tag {
-                font-size: 0.85rem;
-                padding: 0.45rem 1rem;
-            }
-            .hero-btn {
-                padding: 0.85rem 1.9rem;
-                font-size: 0.98rem;
-            }
-            .stats-banner {
-                padding: 80px 1.5rem;
-            }
-            .stats-banner .stats-container {
-                gap: 1.5rem;
-            }
-            .stat-item h3 {
-                font-size: 1.9rem;
-            }
-            .stat-item p {
-                font-size: 0.9rem;
-            }
-            .features-section {
-                padding: 80px 1.5rem;
-            }
-            .features-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 2rem;
-            }
-            .feature-card {
-                padding: 2.2rem 1.6rem;
-            }
-            .feature-icon {
-                font-size: 3rem;
-                margin-bottom: 1.1rem;
-            }
-            .feature-card h3 {
-                font-size: 1.4rem;
-            }
-            .feature-card p {
-                font-size: 0.95rem;
-                line-height: 1.6;
-            }
-            .timeline-section {
-                padding: 90px 1.5rem;
-            }
-            .timeline-title {
-                font-size: 2rem;
-            }
-            .timeline-subtitle {
-                font-size: 0.98rem;
-                margin-bottom: 2.5rem;
-            }
-            .timeline-track {
-                gap: 1.5rem;
-            }
-            .timeline-item {
-                flex-basis: 240px;
-                padding: 1.6rem 1.4rem 2rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .section-subtitle {
-                font-size: 1rem;
-                margin-bottom: 3rem;
-            }
-            .cta-section {
-                padding: 80px 1.5rem;
-            }
-            .cta-section h2 {
-                font-size: 2.2rem;
-            }
-            .cta-section p {
-                font-size: 1.05rem;
-            }
-            .cta-section .cta-button {
-                padding: 1rem 2.3rem;
-                font-size: 1.05rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .fullpage-section {
-                padding: 60px 1.25rem;
-            }
-            .hero-section h1 {
-                font-size: 1.8rem;
-            }
-            .hero-section .hero-eyebrow {
-                font-size: 0.78rem;
-            }
-            .hero-section .hero-lead {
-                font-size: 0.95rem;
-                margin-bottom: 1.4rem;
-            }
-            .hero-tags {
-                gap: 0.55rem;
-                margin-bottom: 2rem;
-            }
-            .hero-tag {
-                width: 100%;
-                justify-content: center;
-            }
-            .hero-buttons {
-                gap: 1rem;
-            }
-            .hero-btn {
-                width: 100%;
-                padding: 0.85rem 1.4rem;
-                font-size: 0.9rem;
-            }
-            .stats-banner .stats-container {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 1.25rem;
-            }
-            .stat-item h3 {
-                font-size: 1.6rem;
-            }
-            .stat-item p {
-                font-size: 0.85rem;
-            }
-            .features-section {
-                padding: 60px 1.25rem;
-            }
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .feature-card {
-                padding: 1.8rem 1.3rem;
-            }
-            .feature-icon {
-                font-size: 2.6rem;
-            }
-            .feature-card h3 {
-                font-size: 1.25rem;
-            }
-            .feature-card p {
-                font-size: 0.88rem;
-            }
-            .timeline-section {
-                padding: 70px 1.25rem;
-            }
-            .timeline-title {
-                font-size: 1.7rem;
-            }
-            .timeline-subtitle {
-                font-size: 0.9rem;
-            }
-            .timeline-track {
-                padding: 1.5rem 0.6rem;
-            }
-            .timeline-item {
-                flex-basis: 220px;
-                padding: 1.4rem 1.2rem 1.8rem;
-            }
-            .section-title {
-                font-size: 1.75rem;
-            }
-            .section-subtitle {
-                font-size: 0.92rem;
-                margin-bottom: 2.4rem;
-            }
-            .cta-section {
-                padding: 60px 1.25rem;
-            }
-            .cta-section h2 {
-                font-size: 1.9rem;
-            }
-            .cta-section p {
-                font-size: 0.98rem;
-                margin-bottom: 1.8rem;
-            }
-            .cta-section .cta-button {
-                width: 100%;
-                font-size: 0.98rem;
-                padding: 0.85rem 1.4rem;
-            }
-        }
-    </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Header -->
+    <header class="header header--dark" id="header">
         <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="images/siglogo.svg" alt="SIG CORPORATION" class="logo-img">
-            </a>
+            <a href="index.html" class="site-logo">SIG STUDIO</a>
             <button type="button" class="nav-toggle" aria-expanded="false" aria-label="메뉴 열기">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <div class="nav-collapsible">
-                <ul class="nav-menu">
-                    <li><a href="portfolio.html"><span class="nav-text"><span class="nav-text-ko">포트폴리오</span><span class="nav-text-en">PORTFOLIO</span></span></a></li>
-                    <li><a href="about.html"><span class="nav-text"><span class="nav-text-ko">회사 소개</span><span class="nav-text-en">ABOUT US</span></span></a></li>
-                    <li><a href="services.html"><span class="nav-text"><span class="nav-text-ko">사업분야</span><span class="nav-text-en">SERVICES</span></span></a></li>
-                    <li><a href="blog.html"><span class="nav-text"><span class="nav-text-ko">블로그</span><span class="nav-text-en">BLOG</span></span></a></li>
-                    <li><a href="contact.html"><span class="nav-text"><span class="nav-text-ko">제작문의</span><span class="nav-text-en">CONTACT US</span></span></a></li>
-                </ul>
-                <div class="nav-actions">
-                    <span class="auth-badge" data-auth-state="badge"></span>
-                    <button type="button" class="auth-button" data-auth-control="button">로그인</button>
-                    <a href="contact.html" class="cta-button">상담 신청</a>
-                </div>
-            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <section class="hero-section fullpage-section" data-section="0">
-        <p class="hero-eyebrow">SIG CORPORATION</p>
-        <h1>디자인부터 마케팅까지,<br><span class="highlight">성과로 증명하는 A-Z 파트너</span></h1>
-        <p class="hero-lead">디자인·마케팅·운영을 한 팀으로 설계합니다</p>
-        <div class="hero-buttons">
-            <a href="contact.html" class="hero-btn primary">상담하기</a>
-            <a href="portfolio.html" class="hero-btn secondary">포트폴리오</a>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg" style="background-image: url('images/hero-bg.gif');"></div>
+        <div class="hero-content">
+            <h1>시그 스튜디오는 브랜드의 본질을 꿰뚫는 크리에이티브 그룹입니다.<br>전략부터 디자인, 마케팅까지 — 하나의 팀으로 설계합니다.</h1>
+            <a href="#projects" class="hero-cta">시그 작업 보러가기 →</a>
         </div>
     </section>
 
-    <section class="stats-banner stats-banner-main fullpage-section" id="stats-banner" data-section="1">
-        <div class="partners-section">
-            <h2 class="partners-title">파트너사</h2>
-            <p class="partners-subtitle">작은 브랜드부터 대기업까지, 시그코퍼레이션과 함께했습니다</p>
-            <div class="partners-image-wrapper">
-                <img src="images/partners.png" alt="파트너사 로고" class="partners-image">
-            </div>
-        </div>
-    </section>
-
-    <section class="features-section fullpage-section" data-section="2">
+    <!-- About -->
+    <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">MARKETING SOLUTION</h2>
-            <p class="section-subtitle">디자인·마케팅·운영을 한 팀으로 설계합니다</p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <span class="feature-badge">A-Z OPERATION</span>
-                    <h3>A-Z 브랜드 운영 대행</h3>
-                    <p>브랜드 기획부터 디자인, 마케팅, 운영까지 전 과정을 통합 관리하여 일관된 브랜드 경험을 제공합니다.</p>
+            <p class="about-label">About Us</p>
+            <div class="about-grid">
+                <div>
+                    <h2 class="about-heading">Crafting<br>the<br>Extraordinary</h2>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📦</div>
-                    <span class="feature-badge">PACKAGE DESIGN</span>
-                    <h3>패키지 디자인</h3>
-                    <p>제품의 가치를 시각적으로 전달하는 패키지 디자인으로 브랜드 아이덴티티를 강화하고 소비자 경험을 향상시킵니다.</p>
+                <div class="about-desc">
+                    <p>SIG STUDIO is a group of creative specialists crafting through the synergy of its divisions. With years of practical creative working, design portfolios, and diverse sector project experience — we transform brands into extraordinary experiences.</p>
+                    <p>시그 스튜디오는 크리에이티브 전문가 집단으로, 각 분야의 시너지를 통해 브랜드를 설계합니다. 다년간의 실전 크리에이티브 경험과 다양한 산업 프로젝트를 통해, 브랜드를 특별한 경험으로 전환합니다.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <span class="feature-badge">PERFORMANCE MARKETING</span>
-                    <h3>퍼포먼스 마케팅 실행</h3>
-                    <p>데이터 기반의 정교한 타겟팅과 최적화로 높은 ROI를 달성하는 퍼포먼스 마케팅을 실행합니다.</p>
+            </div>
+
+            <!-- Capabilities -->
+            <p class="capabilities-title">Our Capabilities</p>
+            <div class="capabilities-grid">
+                <div class="capability-col">
+                    <h4>Brand Identity</h4>
+                    <ul>
+                        <li>Brand Strategy</li>
+                        <li>Visual Identity</li>
+                        <li>Logo Design</li>
+                        <li>Typography</li>
+                        <li>Brand Guidelines</li>
+                    </ul>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <span class="feature-badge">GROWTH INFRASTRUCTURE</span>
-                    <h3>그로스 인프라 구축</h3>
-                    <p>CRM, 데이터 파이프라인, 자동화 시스템을 구축하여 지속 가능한 성장 기반을 마련합니다.</p>
+                <div class="capability-col">
+                    <h4>Digital Experience</h4>
+                    <ul>
+                        <li>Web Design</li>
+                        <li>App Design</li>
+                        <li>UI/UX Design</li>
+                        <li>Interactive Design</li>
+                        <li>E-commerce</li>
+                    </ul>
+                </div>
+                <div class="capability-col">
+                    <h4>Communication</h4>
+                    <ul>
+                        <li>Graphic Design</li>
+                        <li>Editorial Design</li>
+                        <li>Package Design</li>
+                        <li>Print Design</li>
+                        <li>Marketing Design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- History -->
+            <div class="history-section">
+                <p class="history-title">History</p>
+                <div class="history-track">
+                    <div class="history-item">
+                        <span class="history-year">2023.08</span>
+                        <h4>시그코퍼레이션 설립</h4>
+                        <p>풀스택 크리에이티브 조직으로 출범</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2023.10</span>
+                        <h4>기획/디자인 사업 확장</h4>
+                        <p>서예담, 투뿔한우 NO.9, 소양옥 공식 대행</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2023.10</span>
+                        <h4>예비창업 지원사업 최우수 졸업</h4>
+                        <p>중소벤처기업부 정부지원사업</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2024.04</span>
+                        <h4>종합 대행 사업 확장</h4>
+                        <p>허브마토, 논현 까사생갈비, 이브봇 외 다수 공식 대행</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2024.04</span>
+                        <h4>서대문구 구청장상 수상</h4>
+                        <p>청년벤처 육성사업 선정</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2024.08</span>
+                        <h4>올인원 대행 사업 확장</h4>
+                        <p>푸드머신코리아, 을화푸드, 유캔, 가치프로젝트 외</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2025.04</span>
+                        <h4>SIG 스튜디오 창설</h4>
+                        <p>크리에이티브 스튜디오 창설 및 운영</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2025.04</span>
+                        <h4>청년창업사관학교 15기 선정</h4>
+                        <p>중간평가 상위 10% '우수' 등급</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2025.08</span>
+                        <h4>AMPM 글로벌 MOU 체결</h4>
+                        <p>No.1 디지털마케팅 전문가그룹</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2025.10</span>
+                        <h4>TIPS 선정</h4>
+                        <p>중소기업기술정보진흥원 창업성장기술개발</p>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-year">2025.10</span>
+                        <h4>스튜디오 본격 운영</h4>
+                        <p>이마트, 노브랜드, 더벤티, PEAIRY 외 대행</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="timeline-section fullpage-section" data-section="3">
-        <div class="timeline-container">
-            <h2 class="timeline-title">SIG 성장 타임라인</h2>
-            <p class="timeline-subtitle">정부지원사업 선정 경험과 제품 고도화 이력을 바탕으로, 마케팅을 넘어 사업 전반을 리딩합니다.</p>
-            <div class="timeline-track">
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2023.08</span>
-                        <span class="timeline-badge">설립</span>
-                    </div>
-                    <h3>주식회사 시그코퍼레이션 설립</h3>
-                    <p>풀스택 조직으로 출범했습니다.</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2023.10</span>
-                        <span class="timeline-badge">사업 확장</span>
-                    </div>
-                    <h3>시그코퍼레이션 기획/디자인 사업 확장</h3>
-                    <p>서예담 공식대행, 투뿔한우 NO.9 공식 운영, 소양옥 공식대행</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2023.10</span>
-                        <span class="timeline-badge">정부지원사업</span>
-                    </div>
-                    <h3>생애최초 예비창업 지원사업 최우수 기업 졸업</h3>
-                    <p>중소벤처기업부 정부지원사업 최우수 졸업</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2024.04</span>
-                        <span class="timeline-badge">종합 대행</span>
-                    </div>
-                    <h3>시그코퍼레이션 종합 대행 사업 확장</h3>
-                    <p>허브마토 공식대행, 논현 까사생갈비 공식대행, 이브봇 프린트펜 공식대행, 미래회관 공식대행, 서큘라이프 공식대행</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2024.04</span>
-                        <span class="timeline-badge">수상</span>
-                    </div>
-                    <h3>서대문구 청년벤처 육성사업 선정 및 구청장상 수상</h3>
-                    <p>서대문구 청년벤처 육성사업 선정 및 구청장상 수상</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2024.08</span>
-                        <span class="timeline-badge">올인원 대행</span>
-                    </div>
-                    <h3>시그코퍼레이션 올인원 대행 사업 확장</h3>
-                    <p>푸드머신코리아 공식대행, 을화푸드 공식대행, 유캔 캔시머 공식대행, 가치프로젝트 공식대행, 오빠어디가 여행 공식대행</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2025.04</span>
-                        <span class="timeline-badge">스튜디오 창설</span>
-                    </div>
-                    <h3>시그코퍼레이션 스튜디오 창설 및 사업 확장</h3>
-                    <p>시그 스튜디오 창설 및 운영</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2025.04</span>
-                        <span class="timeline-badge">우수 등급</span>
-                    </div>
-                    <h3>경기북부중진공 청년창업사관학교 15기 선정</h3>
-                    <p>중간평가 상위 10% '우수' 등급</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2025.08</span>
-                        <span class="timeline-badge">글로벌 MOU</span>
-                    </div>
-                    <h3>AMPM 글로벌 MOU 체결</h3>
-                    <p>No.1 디지털마케팅 전문가그룹, AMPM글로벌 MOU 체결</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2025.10</span>
-                        <span class="timeline-badge">TIPS 선정</span>
-                    </div>
-                    <h3>TIPS 선정</h3>
-                    <p>중소기업기술정보진흥원 창업성장기술개발 팁스 일반트랙 선정</p>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-meta">
-                        <span class="timeline-date">2025.10</span>
-                        <span class="timeline-badge">스튜디오 운영</span>
-                    </div>
-                    <h3>시그코퍼레이션 스튜디오 운영</h3>
-                    <p>이마트, 노브랜드 디자인 대행, PEAIRY 공식대행, 인스타툰 작가 협찬 서비스 공식대행, 더벤티 납품 감자빵 공식 유통사</p>
-                </article>
+    <!-- Projects -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="projects-header">
+                <div>
+                    <p class="about-label">About Our Work</p>
+                    <h2 class="projects-heading">Our Portfolio</h2>
+                </div>
+                <a href="portfolio.html" class="projects-link">View All Projects &gt;</a>
+            </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Rendered by portfolio.js -->
             </div>
         </div>
     </section>
 
-    <section class="cta-section fullpage-section" data-section="4">
-        <h2>지금 바로 시작하세요</h2>
-        <p>무료 상담을 통해 프로젝트의 가능성을 확인해보세요</p>
-        <a href="contact.html" class="cta-button">무료 상담 신청하기 →</a>
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <h2 class="contact-heading">Let's create<br>something<br>extraordinary<br>together.</h2>
+                    <p class="contact-desc">새로운 프로젝트를 시작할 준비가 되셨나요?<br>SIG STUDIO가 브랜드의 다음 단계를 함께 만들어 드립니다.</p>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Email</p>
+                        <p class="contact-info-value">sig@sigcorp.co.kr</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Phone</p>
+                        <p class="contact-info-value">02-000-0000</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Address</p>
+                        <p class="contact-info-value">서울특별시 서대문구</p>
+                    </div>
+                </div>
+                <div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Name</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="이름" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="이메일" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="company">Company</label>
+                            <input type="text" id="company" name="company" class="form-input" placeholder="회사명">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inquiry_type">Service</label>
+                            <select id="inquiry_type" name="inquiry_type" class="form-select" required>
+                                <option value="" disabled selected>서비스를 선택하세요</option>
+                                <option value="브랜딩">Brand Identity</option>
+                                <option value="디지털">Digital Experience</option>
+                                <option value="패키지">Package Design</option>
+                                <option value="마케팅">Marketing</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Your Project</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="프로젝트에 대해 알려주세요" required></textarea>
+                        </div>
+                        <div id="successMessage">문의가 성공적으로 전송되었습니다. 빠른 시일 내에 연락드리겠습니다.</div>
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="portfolio.html">포트폴리오</a>
-                <a href="about.html">회사 소개</a>
-                <a href="services.html">사업분야</a>
-                <a href="blog.html">블로그</a>
-                <a href="contact.html">제작문의</a>
+        <div class="footer-inner">
+            <span class="footer-brand">#SIGSTUDIO</span>
+            <div class="footer-right">
+                <div class="footer-social">
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Behance</a>
+                </div>
+                <span class="footer-copy">&copy; 2026 SIG STUDIO. All rights reserved.</span>
             </div>
-            <p style="opacity: 0.8; margin-top: 2rem;">© 2024 SIG CORPORATION. All rights reserved.</p>
         </div>
     </footer>
-    
+
+    <script src="js/config.js"></script>
     <script src="js/auth.js"></script>
-    <script src="js/fullpage.js"></script>
-    <script src="js/interactive.js"></script>
+    <script type="module" src="js/portfolio.js"></script>
+    <script src="js/contact.js"></script>
+    <script>
+        // Navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.body.classList.toggle('nav-open');
+                navToggle.setAttribute('aria-expanded',
+                    document.body.classList.contains('nav-open'));
+            });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('nav-open');
+            });
+        });
+
+        // Header style change on scroll
+        const header = document.getElementById('header');
+        const hero = document.getElementById('hero');
+        function updateHeader() {
+            if (!hero) return;
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            if (window.scrollY > heroBottom - 80) {
+                header.classList.remove('header--dark');
+            } else {
+                header.classList.add('header--dark');
+            }
+        }
+        window.addEventListener('scroll', updateHeader, { passive: true });
+        updateHeader();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animation
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        animateElements.forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

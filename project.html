@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SIG STUDIO — Project Detail">
+    <title>Project — SIG STUDIO</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="site-logo">SIG STUDIO</a>
+            <button type="button" class="nav-toggle" aria-expanded="false" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Detail -->
+    <main class="project-detail">
+        <div class="container">
+            <a href="index.html#projects" class="project-back">&larr; Back to Projects</a>
+            <h1 class="project-title" id="projectTitle">—</h1>
+            <p class="project-subtitle" id="projectSubtitle"></p>
+            <hr class="project-divider">
+            <p class="project-description" id="projectDescription"></p>
+        </div>
+        <div class="project-image" id="projectImage"></div>
+        <div class="container">
+            <div class="project-meta-grid" id="projectMeta">
+                <div class="project-meta-item">
+                    <p class="project-meta-label">Client</p>
+                    <p class="project-meta-value" id="metaClient">—</p>
+                </div>
+                <div class="project-meta-item">
+                    <p class="project-meta-label">Services</p>
+                    <p class="project-meta-value" id="metaServices">—</p>
+                </div>
+                <div class="project-meta-item">
+                    <p class="project-meta-label">Year</p>
+                    <p class="project-meta-value" id="metaYear">—</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 80px;">
+        <div class="footer-inner">
+            <span class="footer-brand">#SIGSTUDIO</span>
+            <div class="footer-right">
+                <div class="footer-social">
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Behance</a>
+                </div>
+                <span class="footer-copy">&copy; 2026 SIG STUDIO. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script>
+        // Navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.body.classList.toggle('nav-open');
+                navToggle.setAttribute('aria-expanded',
+                    document.body.classList.contains('nav-open'));
+            });
+        }
+
+        // Load project data from localStorage
+        function loadProject() {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+            if (!projectId) {
+                window.location.href = 'index.html#projects';
+                return;
+            }
+
+            let projects = {};
+            try {
+                const stored = localStorage.getItem('sigProjects');
+                if (stored) {
+                    projects = JSON.parse(stored);
+                }
+            } catch (e) {
+                console.warn('Failed to load projects from localStorage');
+            }
+
+            const project = projects[projectId];
+            if (!project) {
+                window.location.href = 'index.html#projects';
+                return;
+            }
+
+            // Update page title
+            document.title = `${project.title} — SIG STUDIO`;
+
+            // Populate content
+            document.getElementById('projectTitle').textContent = project.title || '—';
+            document.getElementById('projectSubtitle').textContent = project.category || '';
+            document.getElementById('projectDescription').textContent = project.description || '';
+            document.getElementById('metaClient').textContent = project.title || '—';
+            document.getElementById('metaServices').textContent = project.category || '—';
+            document.getElementById('metaYear').textContent = project.date || '—';
+
+            // Project image
+            const imageContainer = document.getElementById('projectImage');
+            if (project.images && project.images.length > 0) {
+                const img = document.createElement('img');
+                img.src = project.images[0];
+                img.alt = project.title;
+                imageContainer.appendChild(img);
+            } else {
+                const gradientDiv = document.createElement('div');
+                gradientDiv.style.background = project.gradient || 'linear-gradient(135deg, #171717 0%, #404040 100%)';
+                gradientDiv.style.width = '100%';
+                gradientDiv.style.minHeight = '500px';
+                imageContainer.appendChild(gradientDiv);
+            }
+        }
+
+        loadProject();
+    </script>
+</body>
+</html>

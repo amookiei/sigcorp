@@ -3,340 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="시그코퍼레이션 제작문의 및 상담 신청">
-    <title>제작문의 - 시그코퍼레이션 | SIG Corporation</title>
+    <meta name="description" content="SIG STUDIO — Contact">
+    <title>Contact — SIG STUDIO</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-    <style>
-        .contact-section {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 2rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 60px;
-        }
-
-        .contact-info {
-            padding: 3rem;
-            background: var(--secondary-gray);
-            border-radius: 20px;
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        .info-item {
-            margin-bottom: 2rem;
-        }
-
-        .info-item h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #000000;
-        }
-
-        .info-item p {
-            color: var(--text-gray);
-            line-height: 1.8;
-        }
-
-        .info-item a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .info-item a:hover {
-            color: var(--accent-color);
-        }
-
-        .contact-form {
-            padding: 3rem;
-            background: white;
-            border: 2px solid var(--border-color);
-            border-radius: 20px;
-        }
-
-        .contact-form h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .form-group label .required {
-            color: #ff4444;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 1.2rem;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .form-submit:hover {
-            background: var(--primary-black);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .form-submit:active {
-            transform: translateY(0);
-        }
-
-        .kakao-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #FEE500;
-            color: #000000;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-top: 1rem;
-        }
-
-        .kakao-button:hover {
-            background: #FDD835;
-            transform: translateY(-2px);
-        }
-
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            border: 1px solid #c3e6cb;
-        }
-
-        .success-message.show {
-            display: block;
-        }
-
-        @media (max-width: 968px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-    </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="images/siglogo.svg" alt="SIG CORPORATION" class="logo-img">
-            </a>
+            <a href="index.html" class="site-logo">SIG STUDIO</a>
             <button type="button" class="nav-toggle" aria-expanded="false" aria-label="메뉴 열기">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <div class="nav-collapsible">
-                <ul class="nav-menu">
-                    <li><a href="portfolio.html"><span class="nav-text"><span class="nav-text-ko">포트폴리오</span><span class="nav-text-en">PORTFOLIO</span></span></a></li>
-                    <li><a href="about.html"><span class="nav-text"><span class="nav-text-ko">회사 소개</span><span class="nav-text-en">ABOUT US</span></span></a></li>
-                    <li><a href="services.html"><span class="nav-text"><span class="nav-text-ko">사업분야</span><span class="nav-text-en">SERVICES</span></span></a></li>
-                    <li><a href="blog.html"><span class="nav-text"><span class="nav-text-ko">블로그</span><span class="nav-text-en">BLOG</span></span></a></li>
-                    <li><a href="contact.html"><span class="nav-text"><span class="nav-text-ko">제작문의</span><span class="nav-text-en">CONTACT US</span></span></a></li>
-                </ul>
-                <div class="nav-actions">
-                    <span class="auth-badge" data-auth-state="badge"></span>
-                    <button type="button" class="auth-button" data-auth-control="button">로그인</button>
-                    <a href="contact.html" class="cta-button">상담 신청</a>
-                </div>
-            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <section class="page-header">
-        <h1>제작문의</h1>
-        <p>프로젝트의 성공, 시그코퍼레이션과 함께 시작하세요</p>
-    </section>
-
-    <section class="contact-section">
+    <!-- Contact Section -->
+    <section class="contact" style="margin-top: var(--header-h);">
         <div class="container">
-            <h2 class="section-title">무료 상담 신청</h2>
-            <p class="section-subtitle">24시간 내 답변 드립니다</p>
-
             <div class="contact-grid">
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h3>연락처 정보</h3>
-                    
-                    <div class="info-item">
-                        <h4>📧 이메일</h4>
-                        <p><a href="mailto:contact@sigcorp.co.kr">contact@sigcorp.co.kr</a></p>
+                <div>
+                    <h2 class="contact-heading">Let's create<br>something<br>extraordinary<br>together.</h2>
+                    <p class="contact-desc">새로운 프로젝트를 시작할 준비가 되셨나요?<br>SIG STUDIO가 브랜드의 다음 단계를 함께 만들어 드립니다.<br>24시간 내 답변 드립니다.</p>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Email</p>
+                        <p class="contact-info-value">sig@sigcorp.co.kr</p>
                     </div>
-
-                    <div class="info-item">
-                        <h4>📱 전화</h4>
-                        <p><a href="tel:02-1234-5678">02-1234-5678</a></p>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">평일 10:00 - 18:00</p>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Phone</p>
+                        <p class="contact-info-value">02-000-0000</p>
                     </div>
-
-                    <div class="info-item">
-                        <h4>💬 카카오톡 상담</h4>
-                        <a href="https://pf.kakao.com/" target="_blank" class="kakao-button">
-                            카카오톡 상담하기 →
-                        </a>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Hours</p>
+                        <p class="contact-info-value">평일 10:00 - 18:00</p>
                     </div>
-
-                    <div class="info-item">
-                        <h4>🕐 상담 시간</h4>
-                        <p>평일: 10:00 - 18:00<br>주말/공휴일: 휴무</p>
-                    </div>
-
-                    <div class="info-item">
-                        <h4>⚡ 빠른 답변</h4>
-                        <p>접수 후 24시간 이내 회신<br>긴급 문의는 전화 상담 권장</p>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Address</p>
+                        <p class="contact-info-value">서울특별시 서대문구</p>
                     </div>
                 </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form">
-                    <h3>상담 신청서</h3>
-                    <div id="successMessage" class="success-message">
-                        ✅ 상담 신청이 완료되었습니다! 24시간 내 연락드리겠습니다.
-                    </div>
-                    
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label>이름 <span class="required">*</span></label>
-                            <input type="text" name="name" required placeholder="홍길동">
+                <div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Name</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="이름" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="010-0000-0000" required>
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label>연락처 <span class="required">*</span></label>
-                            <input type="tel" name="phone" required placeholder="010-1234-5678">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="이메일" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="company">Company</label>
+                                <input type="text" id="company" name="company" class="form-input" placeholder="회사명">
+                            </div>
                         </div>
-
                         <div class="form-group">
-                            <label>이메일 <span class="required">*</span></label>
-                            <input type="email" name="email" required placeholder="example@email.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label>회사명</label>
-                            <input type="text" name="company" placeholder="시그코퍼레이션">
-                        </div>
-
-                        <div class="form-group">
-                            <label>문의 유형 <span class="required">*</span></label>
-                            <select name="inquiry_type" required>
-                                <option value="">선택하세요</option>
-                                <option value="wadiz">와디즈 펀딩</option>
-                                <option value="commerce">커머스 마케팅</option>
-                                <option value="branding">브랜딩</option>
-                                <option value="design">디자인</option>
-                                <option value="marketing">통합 마케팅</option>
-                                <option value="other">기타</option>
+                            <label class="form-label" for="inquiry_type">Service</label>
+                            <select id="inquiry_type" name="inquiry_type" class="form-select" required>
+                                <option value="" disabled selected>서비스를 선택하세요</option>
+                                <option value="브랜딩">Brand Identity</option>
+                                <option value="디지털">Digital Experience</option>
+                                <option value="패키지">Package Design</option>
+                                <option value="마케팅">Marketing</option>
+                                <option value="기타">기타</option>
                             </select>
                         </div>
-
                         <div class="form-group">
-                            <label>예산 범위</label>
-                            <select name="budget">
-                                <option value="">선택하세요</option>
-                                <option value="300">300만원 미만</option>
-                                <option value="500">300-500만원</option>
-                                <option value="1000">500-1000만원</option>
-                                <option value="1000+">1000만원 이상</option>
-                                <option value="discuss">협의 필요</option>
-                            </select>
+                            <label class="form-label" for="message">Your Project</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="프로젝트에 대해 자세히 알려주세요" required></textarea>
                         </div>
-
-                        <div class="form-group">
-                            <label>프로젝트 상세 내용 <span class="required">*</span></label>
-                            <textarea name="message" required placeholder="프로젝트에 대해 자세히 설명해주세요.&#10;- 제품/서비스 설명&#10;- 목표 및 기대 효과&#10;- 원하는 일정&#10;- 기타 요청사항"></textarea>
-                        </div>
-
-                        <button type="submit" class="form-submit">상담 신청하기 →</button>
+                        <div id="successMessage">문의가 성공적으로 전송되었습니다. 빠른 시일 내에 연락드리겠습니다.</div>
+                        <button type="submit" class="form-submit">Send Message</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats-banner">
-        <div class="stats-container">
-            <div class="stat-item"><h3>24시간</h3><p>평균 답변 시간</p></div>
-            <div class="stat-item"><h3>무료</h3><p>초기 상담</p></div>
-            <div class="stat-item"><h3>맞춤형</h3><p>견적 제공</p></div>
-            <div class="stat-item"><h3>100%</h3><p>고객 만족</p></div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="portfolio.html">포트폴리오</a>
-                <a href="about.html">회사 소개</a>
-                <a href="services.html">사업분야</a>
-                <a href="blog.html">블로그</a>
-                <a href="contact.html">제작문의</a>
+        <div class="footer-inner">
+            <span class="footer-brand">#SIGSTUDIO</span>
+            <div class="footer-right">
+                <div class="footer-social">
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Behance</a>
+                </div>
+                <span class="footer-copy">&copy; 2026 SIG STUDIO. All rights reserved.</span>
             </div>
-            <p style="opacity: 0.8; margin-top: 2rem;">© 2024 SIG CORPORATION. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="js/config.js"></script>
     <script src="js/contact.js"></script>
     <script src="js/auth.js"></script>
-    <script src="js/interactive.js"></script>
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                document.body.classList.toggle('nav-open');
+                navToggle.setAttribute('aria-expanded',
+                    document.body.classList.contains('nav-open'));
+            });
+        }
+    </script>
 </body>
 </html>

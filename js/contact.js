@@ -218,7 +218,7 @@ async function handleFormSubmit(e) {
     // 버튼 비활성화
     if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = '전송 중...';
+        submitButton.textContent = 'Sending...';
     }
 
     try {
@@ -246,7 +246,7 @@ async function handleFormSubmit(e) {
         // 버튼 활성화
         if (submitButton) {
             submitButton.disabled = false;
-            submitButton.textContent = '상담 신청하기 →';
+            submitButton.textContent = 'Send Message';
         }
     }
 }
